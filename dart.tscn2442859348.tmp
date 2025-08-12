@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c33lg16lidlgn"]
+
+[ext_resource type="Script" uid="uid://cpe3crv33ddx4" path="res://dart.gd" id="1_juip1"]
+[ext_resource type="Texture2D" uid="uid://yct8wuwbk8cd" path="res://art/dart.png" id="1_oncxt"]
+
+[node name="Dart" type="Area2D"]
+script = ExtResource("1_juip1")
+speed = null
+weapon_spacing = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_oncxt")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-232, 0, -162, 0, -159, -25, 48, -17, 94, -48, 184, -45, 226, -23, 230, 8, 199, 40, 85, 44, 42, 19, -165, 39, -164, 13)

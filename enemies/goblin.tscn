@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1cimcduepe2r"]
+
+[ext_resource type="Texture2D" uid="uid://5et85byq5bqy" path="res://art/goblin.png" id="1_gdb6r"]
+[ext_resource type="Script" uid="uid://cg8wh5kdmnid5" path="res://enemies/goblin.gd" id="1_wwx14"]
+
+[sub_resource type="Animation" id="Animation_25ewh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wwx14"]
+resource_name = "idle"
+length = 0.1667
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(0.366021, 0.450626),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_87tty"]
+_data = {
+&"RESET": SubResource("Animation_25ewh"),
+&"idle": SubResource("Animation_wwx14")
+}
+
+[node name="Goblin" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_wwx14")
+speed = 200
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.24)
+texture = ExtResource("1_gdb6r")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-4, -30, -6, -21, -27, -12, -32, -8, -25, -3, -20, 8, -14, 9, 2, 12, -1, 22, 13, 22, 13, 9, 13, 4, 23, 5, 24, 1, 12, -4, 11, -12, 13, -15, 12, -28, 8, -22, 0, -22)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_87tty")
+}
+autoplay = "idle"
