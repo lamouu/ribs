@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0k5smcwm6xdd"]
+[gd_scene load_steps=11 format=3 uid="uid://c0k5smcwm6xdd"]
 
 [ext_resource type="Texture2D" uid="uid://c4qdb073vf7nn" path="res://art/mike.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://3l5j65gwnvjs" path="res://player.gd" id="1_onrkg"]
@@ -54,6 +54,9 @@ _data = {
 &"idle": SubResource("Animation_i3pqv")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sweqy"]
+size = Vector2(162, 312)
+
 [node name="Player" type="Area2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_onrkg")
@@ -63,16 +66,13 @@ dart_scene = ExtResource("2_i3pqv")
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("1_4flbx")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-13.3335, -293.333, -40.0001, -273.333, -50.0001, -240, -36.6669, -206.667, -33.3335, -186.667, -20.0001, -180, -20.0001, -163.333, -100, -173.333, -126.667, -3.33337, -146.667, 103.333, -120, 156.667, -96.6669, 186.667, -90.0001, 263.333, -76.6669, 276.667, -73.3335, 263.333, -76.6669, 96.6666, 36.6665, 93.3333, 53.3331, 260, 66.6665, 260, 69.9999, 173.333, 113.333, 150, 120, 96.6666, 96.6665, -26.6667, 79.9999, -83.3334, 93.3331, -163.333, -0.00012207, -160, -3.3335, -176.667, 19.9999, -180, 9.99988, -206.667, 29.9999, -233.333, 29.9999, -273.333, 6.6665, -293.333)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+[node name="Shader" type="CanvasLayer" parent="Camera2D"]
 visible = false
 script = ExtResource("4_sweqy")
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Shader"]
 visible = false
 top_level = true
 material = SubResource("ShaderMaterial_sweqy")
@@ -92,3 +92,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_sweqy")
 }
 autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_sweqy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

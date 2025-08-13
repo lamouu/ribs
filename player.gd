@@ -1,5 +1,7 @@
 extends Area2D
 
+signal player_hit
+
 @export var dart_scene: PackedScene
 @export var speed = 400
 
@@ -30,3 +32,8 @@ func _process(delta: float) -> void:
 			$AttackCooldown.start()
 			var dart = dart_scene.instantiate()
 			add_child(dart)
+
+func _on_body_entered(body: Node2D) -> void:
+	print("bing")
+	player_hit.emit()
+	#$CollisionShape2D.set_deferred("disabled", true)

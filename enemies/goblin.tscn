@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1cimcduepe2r"]
+[gd_scene load_steps=7 format=3 uid="uid://b1cimcduepe2r"]
 
-[ext_resource type="Texture2D" uid="uid://5et85byq5bqy" path="res://art/goblin.png" id="1_gdb6r"]
 [ext_resource type="Script" uid="uid://cg8wh5kdmnid5" path="res://enemies/goblin.gd" id="1_wwx14"]
+[ext_resource type="Texture2D" uid="uid://dswve7xpd5c00" path="res://art/goblinV2.png" id="2_wwx14"]
 
 [sub_resource type="Animation" id="Animation_25ewh"]
 length = 0.001
@@ -41,6 +41,9 @@ _data = {
 &"idle": SubResource("Animation_wwx14")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwx14"]
+size = Vector2(60, 74)
+
 [node name="Goblin" type="RigidBody2D"]
 collision_mask = 0
 gravity_scale = 0.0
@@ -48,14 +51,15 @@ script = ExtResource("1_wwx14")
 speed = 200
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.24)
-texture = ExtResource("1_gdb6r")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-4, -30, -6, -21, -27, -12, -32, -8, -25, -3, -20, 8, -14, 9, 2, 12, -1, 22, 13, 22, 13, 9, 13, 4, 23, 5, 24, 1, 12, -4, 11, -12, 13, -15, 12, -28, 8, -22, 0, -22)
+scale = Vector2(0.18, 0.173)
+texture = ExtResource("2_wwx14")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_87tty")
 }
 autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 3)
+shape = SubResource("RectangleShape2D_wwx14")
