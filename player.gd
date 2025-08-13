@@ -1,6 +1,5 @@
 extends Area2D
 
-signal player_position
 signal player_hit
 
 @export var dart_scene: PackedScene
@@ -12,8 +11,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	player_position.emit(position)
-	
 	var velocity = Vector2.ZERO
 	
 	if Input.is_action_pressed("move_right"):

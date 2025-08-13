@@ -24,6 +24,4 @@ wait_time = 0.25
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 
-[connection signal="player_position_signal" from="." to="." method="_on_player_position_signal"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
-[connection signal="player_position" from="Player" to="." method="_on_player_player_position"]
