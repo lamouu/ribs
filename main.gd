@@ -1,7 +1,9 @@
 extends Node
 
 @export var mob_scene: PackedScene
+signal player_position_signal
 var rng = RandomNumberGenerator.new()
+var player_position: Vector2 = 	Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,14 +27,19 @@ func _on_spawn_timer_timeout() -> void:
 	var rnd_y_offset = rng.randf_range(- y_offset * 0.5, y_offset * 0.5)
 	
 	if mob_spawn_direction == "up":
-		mob_spawn_location = Player.global_position + Vector2(rnd_x_offset, -y_offset)
+		mob_spawn_location = player_position + Vector2(rnd_x_offset, -y_offset)
 	elif mob_spawn_direction == "down":
-		mob_spawn_location = Player.global_position + Vector2(rnd_x_offset, y_offset)
+		mob_spawn_location = player_position + Vector2(rnd_x_offset, y_offset)
 	elif mob_spawn_direction == "left":
-		mob_spawn_location = Player.global_position + Vector2(-x_offset, rnd_y_offset)
+		mob_spawn_location = player_position + Vector2(-x_offset, rnd_y_offset)
 	elif mob_spawn_direction == "right":
-		mob_spawn_location = Player.global_position + Vector2(x_offset, rnd_y_offset)
+		mob_spawn_location = player_position + Vector2(x_offset, rnd_y_offset)
 
 	mob.position = mob_spawn_location
 	
 	add_child(mob)
+
+func _on_player_player_position(position) -> void:
+	player_position = position
+	player_position_signal.emit(player_position)
+	
