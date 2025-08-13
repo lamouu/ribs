@@ -34,6 +34,6 @@ func _process(delta: float) -> void:
 			add_child(dart)
 
 func _on_body_entered(body: Node2D) -> void:
-	print("bing")
+	print("DING")
 	player_hit.emit()
 	#$CollisionShape2D.set_deferred("disabled", true)
