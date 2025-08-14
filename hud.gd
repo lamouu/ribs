@@ -23,7 +23,7 @@ func update_time():
 	$Time.text = "time: " + str(int(1000000000 - time_node.time_left)) + "s"
 
 func update_score():
-	$Score.text = "score placeholder"
+	$Score.text = "score: " + str(player_node.score)
 
 func update_health():
 	$Health.text = "health: " + str(player_node.health)

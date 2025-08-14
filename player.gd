@@ -6,6 +6,7 @@ signal player_hit
 @export var speed = 400
 @export var max_health: int = 3
 @export var health: int
+var score: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
