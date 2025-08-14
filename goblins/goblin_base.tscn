@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://3hd7vwva2j7r"]
+[gd_scene load_steps=7 format=3 uid="uid://df2j1s5x27xm8"]
 
-[ext_resource type="Script" uid="uid://bo368nww0xjyc" path="res://goblins/goblin_base.gd" id="1_q3hsk"]
+[ext_resource type="Script" path="res://goblins/goblin_base.gd" id="1_q3hsk"]
 [ext_resource type="Texture2D" uid="uid://dswve7xpd5c00" path="res://art/goblinV2.png" id="2_n0lkc"]
 
 [sub_resource type="Animation" id="Animation_25ewh"]

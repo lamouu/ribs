@@ -27,7 +27,9 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: RigidBody2D) -> void:
-	if body.collision_layer == 3:
+
+	if body.mob_type == "goblin":
+		print("goblin hit")
 		goblin_hit(body)
 
 func goblin_hit(body):

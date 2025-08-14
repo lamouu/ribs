@@ -3,6 +3,7 @@ extends Area2D
 signal player_hit
 
 @export var dart_scene: PackedScene
+@export var pool_cue_scene: PackedScene
 @export var speed = 400
 @export var max_health: int = 3
 @export var health: int
@@ -35,7 +36,10 @@ func _process(delta: float) -> void:
 			$AttackCooldown.start()
 			var dart = dart_scene.instantiate()
 			add_child(dart)
-			
+	
+	if Input.is_action_just_pressed("special_attack"):
+		var pool_cue = pool_cue_scene.instantiate()
+		add_child(pool_cue)
 
 func _on_body_entered(body: Node2D) -> void:
 	take_damage(body)
