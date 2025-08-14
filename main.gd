@@ -18,9 +18,9 @@ func _on_spawn_timer_timeout() -> void:
 	var mob_spawn_location
 	var mob_spawn_direction = ["up", "down", "left", "right"].pick_random()
 
-	var x_offset = 1100
+	var x_offset = DisplayServer.screen_get_size().x
 	var rnd_x_offset = rng.randf_range(- x_offset * 0.5, x_offset * 0.5)
-	var y_offset = 1100
+	var y_offset = DisplayServer.screen_get_size().y
 	var rnd_y_offset = rng.randf_range(- y_offset * 0.5, y_offset * 0.5)
 	
 	if mob_spawn_direction == "up":
