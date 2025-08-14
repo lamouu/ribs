@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: RigidBody2D) -> void:
 
 	if body.mob_type == "goblin":
-		print(body.health)
+		print("goblin hit")
 		goblin_hit(body)
 
 func goblin_hit(body):
