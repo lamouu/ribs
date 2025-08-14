@@ -1,6 +1,7 @@
 extends Node
 
 @export var mob_scene: PackedScene
+var goblin_scenes = [preload("res://goblins/goblin.tscn"), preload("res://goblins/rock_goblin.tscn"), preload("res://goblins/naked_goblin.tscn"), preload("res://goblins/pirate_goblin.tscn")]
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -13,7 +14,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_spawn_timer_timeout() -> void:
-	var mob = mob_scene.instantiate()
+	var mob = goblin_scenes.pick_random().instantiate()
 	
 	var mob_spawn_location
 	var mob_spawn_direction = ["up", "down", "left", "right"].pick_random()

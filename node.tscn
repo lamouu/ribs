@@ -1,6 +1,17 @@
 [gd_scene load_steps=2 format=3 uid="uid://dj7ihw511v0fw"]
 
-[ext_resource type="Script" uid="uid://dps54thy40bco" path="res://goblins/individual_goblins/pirategoblin.gd" id="1_sy5k4"]
+[sub_resource type="GDScript" id="GDScript_nxiqb"]
+script/source = "extends \"res://goblins/goblin.gd\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="PirateGoblin" type="Node"]
-script = ExtResource("1_sy5k4")
+script = SubResource("GDScript_nxiqb")
