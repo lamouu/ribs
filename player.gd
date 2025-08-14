@@ -37,10 +37,7 @@ func _process(delta: float) -> void:
 			add_child(dart)
 
 func _on_body_entered(body: Node2D) -> void:
-	player_hit.emit()
 	take_damage(body)
-	
-	#$CollisionShape2D.set_deferred("disabled", true)
 	
 func take_damage(damage_source):
 	if $InvulnerabilityTimer.is_stopped():
@@ -51,6 +48,8 @@ func take_damage(damage_source):
 		
 		$InvulnerabilityTimer.start()
 		$InvulnerabilityAnimation.play("damage_taken")
+		
+		player_hit.emit(damage_source)
 
 
 func _on_invulnerability_timer_timeout() -> void:

@@ -67,3 +67,6 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5, 2)
 shape = SubResource("RectangleShape2D_wwx14")
+
+[node name="ImpulseTimer" type="Timer" parent="."]
+one_shot = true
