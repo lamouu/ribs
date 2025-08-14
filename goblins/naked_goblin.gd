@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+@export var mob_type = "goblin"
+@export var attack_damage = 1
 @export var speed = 300
 @export var health = 100
 
