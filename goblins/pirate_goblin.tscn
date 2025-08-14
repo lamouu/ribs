@@ -68,3 +68,7 @@ shape = SubResource("RectangleShape2D_wwx14")
 
 [node name="ImpulseTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c0k5smcwm6xdd"]
+[gd_scene load_steps=12 format=3 uid="uid://c0k5smcwm6xdd"]
 
 [ext_resource type="Texture2D" uid="uid://c4qdb073vf7nn" path="res://art/mike.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://3l5j65gwnvjs" path="res://player.gd" id="1_onrkg"]
@@ -79,9 +79,6 @@ _data = {
 &"idle": SubResource("Animation_i3pqv")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sweqy"]
-size = Vector2(162, 312)
-
 [node name="Player" type="Area2D"]
 top_level = true
 scale = Vector2(0.5, 0.5)
@@ -128,11 +125,10 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
-shape = SubResource("RectangleShape2D_sweqy")
-
 [node name="HUD" parent="." instance=ExtResource("6_2hs0m")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-2, -156, 14, -154, 24, -142, 26, -118, 16, -106, 48, -94, 60, -52, 74, -24, 74, 10, 82, 46, 68, 58, 40, 58, 46, 144, 24, 152, -30, 154, -50, 142, -42, 52, -76, 58, -90, 44, -76, 10, -78, -26, -64, -58, -58, -92, -20, -100, -32, -120, -34, -140, -20, -154)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_invulnerability_timer_timeout"]

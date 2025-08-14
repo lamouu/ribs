@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+# THIS CAN BE REWRITTEN USING ClassType.new() TO MAKE NODES IN THE INSTANCED GOBLIN SCENES
+
 signal player_hit
 
 @export var mob_type = "goblin"
@@ -12,7 +14,6 @@ var player_position: Vector2 = 	Vector2.ZERO
 var velocity
 var distance
 var player_node
-var impulse_timer_node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,6 +21,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#if $FlashTimer:
+	#	if not $FlashTimer.is_stopped():
+	#		$CanvasModulate.set_color(Color(0.980392, 0.921569, 0.843137, 1))
 	pass
 
 func follow_physics(state):
@@ -44,9 +48,15 @@ func follow_physics(state):
 func _on_player_hit(damage_source):
 	#if damage_source == self: # toggle to only push back the mob that hurt my boy
 	get_pushed()
+	go_red()
 
 func get_pushed():
 	if velocity != Vector2.ZERO:
 		if $ImpulseTimer:
 			$ImpulseTimer.start()
-	
+
+func go_red():
+	#if $FlashTimer:
+	#	$FlashTimer.start()
+	#	$CanvasModulate.set_color(Color(0.941176, 0.972549, 1, 1))
+	pass

@@ -37,4 +37,6 @@ func goblin_hit(body):
 	if body.health <= 0:
 		player_node.score += 1
 		body.free()
-	
+	else:
+		pass
+		# flash body red using canvasmodulate

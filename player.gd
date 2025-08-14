@@ -35,6 +35,7 @@ func _process(delta: float) -> void:
 			$AttackCooldown.start()
 			var dart = dart_scene.instantiate()
 			add_child(dart)
+			
 
 func _on_body_entered(body: Node2D) -> void:
 	take_damage(body)
