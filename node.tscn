@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj7ihw511v0fw"]
+
+[ext_resource type="Script" uid="uid://dps54thy40bco" path="res://goblins/individual_goblins/pirategoblin.gd" id="1_sy5k4"]
+
+[node name="PirateGoblin" type="Node"]
+script = ExtResource("1_sy5k4")

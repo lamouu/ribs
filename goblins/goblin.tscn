@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b1cimcduepe2r"]
 
-[ext_resource type="Script" uid="uid://cg8wh5kdmnid5" path="res://enemies/goblin.gd" id="1_wwx14"]
+[ext_resource type="Script" uid="uid://cg8wh5kdmnid5" path="res://goblins/goblin.gd" id="1_wwx14"]
 [ext_resource type="Texture2D" uid="uid://dswve7xpd5c00" path="res://art/goblinV2.png" id="2_wwx14"]
 
 [sub_resource type="Animation" id="Animation_25ewh"]
@@ -64,13 +64,4 @@ autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5, 2)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wwx14")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -29.0
-offset_top = -35.0
-offset_right = 31.0
-offset_bottom = 39.0
