@@ -1,32 +1,13 @@
-extends RigidBody2D
-
-@export var mob_type = "goblin"
-@export var attack_damage = 1
-@export var speed = 300
-@export var health = 100
-
-var player_position: Vector2 = 	Vector2.ZERO
-var velocity
-var player_node
+extends "res://goblins/goblin_base.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player_node = get_node("../Player")
+	player_node = get_node("/root/Main/Player")
+	player_node.player_hit.connect(_on_player_hit)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
-func _integrate_forces(state):
-	player_position = player_node.position
-	velocity = position.direction_to(player_position)
-	
 
-	if velocity.x > 0:
-		$Sprite2D.flip_h = true
-	else:
-		$Sprite2D.flip_h = false
-	
-	velocity = velocity.normalized() * speed
-	
-	state.linear_velocity = velocity
+func _integrate_forces(state):
+	follow_physics(state)

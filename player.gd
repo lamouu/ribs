@@ -7,6 +7,7 @@ signal player_hit
 @export var speed = 400
 @export var max_health: int = 3
 @export var health: int
+var score: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,10 +42,7 @@ func _process(delta: float) -> void:
 		add_child(pool_cue)
 
 func _on_body_entered(body: Node2D) -> void:
-	player_hit.emit()
 	take_damage(body)
-	
-	#$CollisionShape2D.set_deferred("disabled", true)
 	
 func take_damage(damage_source):
 	if $InvulnerabilityTimer.is_stopped():
@@ -56,9 +54,7 @@ func take_damage(damage_source):
 		$InvulnerabilityTimer.start()
 		$InvulnerabilityAnimation.play("damage_taken")
 		
-		print("hit to " + str(health) + "hp by " + str(damage_source.mob_type))
-	else:
-		print("hit by " + str(damage_source.mob_type) + " but invulnerable")
+		player_hit.emit(damage_source)
 
 
 func _on_invulnerability_timer_timeout() -> void:

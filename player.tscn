@@ -10,13 +10,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sweqy"]
 shader = ExtResource("4_hqtel")
-shader_parameter/resolution = Vector2(1980, 1080)
-shader_parameter/scan_line_amount = 0.0
-shader_parameter/warp_amount = 0.0
-shader_parameter/vignette_amount = 0.5
-shader_parameter/vignette_intensity = 1.0
-shader_parameter/grille_amount = 0.695
-shader_parameter/brightness_boost = 1.426
+shader_parameter/solid_color = Vector4(0, 0, 0, 0)
 
 [sub_resource type="Animation" id="Animation_hqtel"]
 length = 0.001
