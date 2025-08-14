@@ -26,6 +26,5 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: RigidBody2D) -> void:
 	if body.mob_type == "goblin":
 		print("goblin hit")
-		print(body.mob_type)
 		body.free()
 		queue_free()
