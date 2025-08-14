@@ -1,4 +1,5 @@
 extends CanvasLayer
+
 var time_node
 var player_node
 
@@ -16,7 +17,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	update_time()
 	update_score()
-	update_health()
+	update_health() #could replace with the player_hit() signal
 
 func update_time():
 	$Time.text = "time: " + str(int(1000000000 - time_node.time_left)) + "s"
