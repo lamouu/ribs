@@ -21,3 +21,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	global_position += velocity * delta
+
+
+func _on_body_entered(body: RigidBody2D) -> void:
+	if body.collision_layer == 3:
+		print("goblin hit")
+		body.free()
+		queue_free()

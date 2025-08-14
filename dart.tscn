@@ -5,7 +5,7 @@
 
 [node name="Dart" type="Area2D"]
 rotation = 3.14159
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_juip1")
 
@@ -16,3 +16,5 @@ texture = ExtResource("1_oncxt")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(35, 8.87314e-05, 24, 6.08444e-05, 24, 2.00006, -7.00001, 1.99998, -15, 2.99996, -28, 2.99993, -35, 1.99991, -35, -1.00009, -30, -3.00008, -13, -4.00003, -6.99999, -2.00002, 24, -2.99994, 25, -0.999937, 36, 9.12665e-05)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
