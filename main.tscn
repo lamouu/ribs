@@ -24,4 +24,8 @@ wait_time = 0.25
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 
+[node name="GameTime" type="Timer" parent="."]
+wait_time = 1e+09
+autostart = true
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

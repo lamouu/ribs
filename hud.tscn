@@ -1,3 +1,25 @@
-[gd_scene format=3 uid="uid://b2udjrcll0hh1"]
+[gd_scene load_steps=2 format=3 uid="uid://b2udjrcll0hh1"]
+
+[ext_resource type="Script" uid="uid://7aehprtyms7t" path="res://hud.gd" id="1_37p78"]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_37p78")
+
+[node name="Time" type="Label" parent="."]
+offset_right = 1919.0
+offset_bottom = 682.0
+theme_override_font_sizes/font_size = 50
+
+[node name="Score" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 56.0
+offset_right = 41.0
+offset_bottom = 125.0
+theme_override_font_sizes/font_size = 50
+
+[node name="Health" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 114.0
+offset_right = 42.0
+offset_bottom = 183.0
+theme_override_font_sizes/font_size = 50

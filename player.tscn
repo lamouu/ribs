@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0k5smcwm6xdd"]
+[gd_scene load_steps=13 format=3 uid="uid://c0k5smcwm6xdd"]
 
 [ext_resource type="Texture2D" uid="uid://c4qdb073vf7nn" path="res://art/mike.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://3l5j65gwnvjs" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://c33lg16lidlgn" path="res://dart.tscn" id="2_i3pqv"]
 [ext_resource type="Shader" uid="uid://gttttj6d68ci" path="res://main.gdshader" id="4_hqtel"]
 [ext_resource type="Script" uid="uid://bpmnrt0ujda68" path="res://canvas_layer.gd" id="4_sweqy"]
+[ext_resource type="PackedScene" uid="uid://b2udjrcll0hh1" path="res://hud.tscn" id="6_2hs0m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sweqy"]
 shader = ExtResource("4_hqtel")
@@ -136,6 +137,8 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_sweqy")
+
+[node name="HUD" parent="." instance=ExtResource("6_2hs0m")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_invulnerability_timer_timeout"]
