@@ -50,10 +50,6 @@ func take_damage(damage_source):
 		
 		$InvulnerabilityTimer.start()
 		$InvulnerabilityAnimation.play("damage_taken")
-		
-		print("hit to " + str(health) + "hp by " + str(damage_source.mob_type))
-	else:
-		print("hit by " + str(damage_source.mob_type) + " but invulnerable")
 
 
 func _on_invulnerability_timer_timeout() -> void:

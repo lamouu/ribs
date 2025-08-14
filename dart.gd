@@ -1,9 +1,10 @@
 extends Area2D
 
+signal mob_hit
+
 @export var speed = 600
 @export var weapon_spacing = 60
 @export var char_offset = 35
-
 
 var velocity
 var player_node
@@ -25,6 +26,5 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: RigidBody2D) -> void:
 	if body.collision_layer == 3:
-		print("goblin hit")
 		body.free()
 		queue_free()
