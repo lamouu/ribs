@@ -40,10 +40,9 @@ func follow_physics(state):
 	if $ImpulseTimer:
 		if not $ImpulseTimer.is_stopped():
 			apply_impulse(-velocity * knockback_impulse * (1/distance))
-			print("ding")
 
-func _on_player_hit(damage_source): # I cant remember why I added this I might have adhd
-	#if damage_source == self:
+func _on_player_hit(damage_source):
+	#if damage_source == self: # toggle to only push back the mob that hurt my boy
 	get_pushed()
 
 func get_pushed():
