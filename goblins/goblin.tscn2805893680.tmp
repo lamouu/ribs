@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bd6rd0jg50xcp"]
+[gd_scene load_steps=7 format=3 uid="uid://b1cimcduepe2r"]
 
-[ext_resource type="Script" uid="uid://dbwcm7plph1yc" path="res://goblins/naked_goblin.gd" id="1_tgj0l"]
-[ext_resource type="Texture2D" uid="uid://bdk3iavtn8w6g" path="res://art/goblins/naked_goblin.png" id="2_tgj0l"]
+[ext_resource type="Script" uid="uid://cg8wh5kdmnid5" path="res://goblins/goblin.gd" id="1_wwx14"]
+[ext_resource type="Texture2D" uid="uid://cr6824pfjrfd" path="res://art/goblins/basic_goblin.png" id="2_5ygka"]
 
 [sub_resource type="Animation" id="Animation_25ewh"]
 length = 0.001
@@ -49,11 +49,19 @@ collision_layer = 3
 mass = 50.0
 gravity_scale = 0.0
 lock_rotation = true
-script = ExtResource("1_tgj0l")
+max_contacts_reported = 1
+script = ExtResource("1_wwx14")
+mob_type = null
+attack_damage = null
+speed = 200
+health = null
+knockback_impulse = null
+player_gravity = null
+coeff_friction = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.18, 0.173)
-texture = ExtResource("2_tgj0l")
+texture = ExtResource("2_5ygka")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -64,9 +72,6 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5, 2)
 shape = SubResource("RectangleShape2D_wwx14")
-
-[node name="ImpulseTimer" type="Timer" parent="."]
-one_shot = true
 
 [node name="FlashTimer" type="Timer" parent="."]
 wait_time = 0.1

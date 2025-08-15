@@ -8,12 +8,16 @@ signal player_hit
 @export var attack_damage = 1
 @export var speed = 300
 @export var health = 100
-@export var knockback_impulse = 50000
+@export var knockback_impulse = 600000
+@export var player_gravity = 20000
+@export var coeff_friction = 70
 
 var player_position: Vector2 = 	Vector2.ZERO
-var velocity
+var direction
 var distance
 var player_node
+var gravity_force
+var friction_force
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,24 +30,21 @@ func _process(delta: float) -> void:
 	#		$CanvasModulate.set_color(Color(0.980392, 0.921569, 0.843137, 1))
 	pass
 
-func follow_physics(state):
+func follow_physics():
 	player_position = player_node.position
 	distance = position.distance_to(player_position)
-	velocity = position.direction_to(player_position)
-	
+	direction = position.direction_to(player_position)
 
-	if velocity.x > 0:
+	gravity_force = direction * player_gravity
+	friction_force = - get_linear_velocity() * coeff_friction
+
+	apply_central_force(gravity_force)
+	apply_central_force(friction_force)
+	
+	if direction.x > 0:
 		$Sprite2D.flip_h = true
 	else:
 		$Sprite2D.flip_h = false
-	
-	velocity = velocity.normalized() * speed
-	
-	state.linear_velocity = velocity
-	
-	if $ImpulseTimer:
-		if not $ImpulseTimer.is_stopped():
-			apply_impulse(-velocity * knockback_impulse * (1/distance))
 
 func _on_player_hit(damage_source):
 	#if damage_source == self: # toggle to only push back the mob that hurt my boy
@@ -51,9 +52,8 @@ func _on_player_hit(damage_source):
 	go_red()
 
 func get_pushed():
-	if velocity != Vector2.ZERO:
-		if $ImpulseTimer:
-			$ImpulseTimer.start()
+	print(distance)
+	apply_impulse(-direction * knockback_impulse * ((distance + 1) ** -0.5))
 
 func go_red():
 	#if $FlashTimer:

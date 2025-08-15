@@ -7,7 +7,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
-func _integrate_forces(state):
-	follow_physics(state)
+	follow_physics()

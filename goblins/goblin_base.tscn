@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://df2j1s5x27xm8"]
 
-[ext_resource type="Script" path="res://goblins/goblin_base.gd" id="1_q3hsk"]
+[ext_resource type="Script" uid="uid://bo368nww0xjyc" path="res://goblins/goblin_base.gd" id="1_q3hsk"]
 [ext_resource type="Texture2D" uid="uid://dswve7xpd5c00" path="res://art/goblinV2.png" id="2_n0lkc"]
 
 [sub_resource type="Animation" id="Animation_25ewh"]
@@ -46,11 +46,8 @@ size = Vector2(50.5, 71)
 
 [node name="Goblin" type="RigidBody2D"]
 collision_layer = 3
-mass = 118.979
 gravity_scale = 0.0
-lock_rotation = true
-custom_integrator = true
-contact_monitor = true
+can_sleep = false
 max_contacts_reported = 1
 script = ExtResource("1_q3hsk")
 
