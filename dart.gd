@@ -40,6 +40,6 @@ func goblin_hit(body):
 		player_node.score += 1
 		body.free()
 	else:
-		body.apply_impulse(-direction * knockback_impulse)
-		
+		#body.apply_impulse(-direction * knockback_impulse)
+		pass
 		# flash body red using canvasmodulate
