@@ -19,11 +19,34 @@ var distance
 var player_node
 var gravity_force
 var friction_force
-var is_pool_shot: bool
+var is_pool_shot: bool = false
+var goblin_type_dictionary: Dictionary = {
+	"basic_goblin": 1,
+	"naked_goblin": 2,
+	"pirate_goblin": 3,
+	"rock_goblin": 4
+}
+var goblin_type
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	#Chooses a random goblin_type using pick_random function
+	goblin_type = pick_random(goblin_type_dictionary)
+	
+	#Sets Sprite2D texture to the goblin_type corresponding image
+	if goblin_type == "basic_goblin":
+		$Sprite2D.texture = load("res://art/goblins/basic_goblin.png")
+	elif goblin_type == "naked_goblin":
+		$Sprite2D.texture = load("res://art/goblins/naked_goblin.png")
+	elif goblin_type == "pirate_goblin":
+		$Sprite2D.texture = load("res://art/goblins/pirate_goblin.png")
+	elif goblin_type == "rock_goblin":
+		$Sprite2D.texture = load("res://art/goblins/rock_goblin.png")
+		
+	#setup from old goblin types
+	player_node = get_node("/root/Main/Player")
+	follow_physics()
+	player_node.player_hit.connect(_on_player_hit)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -31,6 +54,11 @@ func _process(delta: float) -> void:
 	#	if not $FlashTimer.is_stopped():
 	#		$CanvasModulate.set_color(Color(0.980392, 0.921569, 0.843137, 1))
 	pass
+
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	follow_physics()
+
 
 func follow_physics():
 	player_position = player_node.position
@@ -71,3 +99,9 @@ func _on_body_entered(body: Node) -> void:
 		if body.is_pool_shot == true:
 			print("goblin hit goblin")
 			apply_impulse(-direction * pool_shot_knockback_impulse * distance)
+			
+
+#returns a random key from the goblin_type_dictionary
+func pick_random(dictionary: Dictionary):
+	var random_goblin_key = goblin_type_dictionary.keys().pick_random()
+	return random_goblin_key
