@@ -3,6 +3,7 @@ var movement: Vector2
 var speed = 5
 var char_offset = 5
 var firing_vec
+@export var knockback_impulse = 90000
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,8 +17,9 @@ func _process(delta: float) -> void:
 	
 func _on_body_entered(body: RigidBody2D) -> void:
 	if body.mob_type == "goblin":
-		print("pool cue hit goblin")
-		
+		if not $CueExtendTimer.is_stopped():
+			body.apply_impulse(firing_vec * knockback_impulse)
+			$CollisionShape2D.set_deferred("disabled", true)
 
 
 func _on_cue_retract_timer_timeout() -> void:
@@ -25,5 +27,4 @@ func _on_cue_retract_timer_timeout() -> void:
 
 
 func _on_cue_extend_timer_timeout() -> void:
-	print("cue test")
 	movement = -firing_vec * speed
