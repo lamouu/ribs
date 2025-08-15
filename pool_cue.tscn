@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://x61en6md8dkc" path="res://pool_cue.gd" id="1_oncs0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oncs0"]
-size = Vector2(48, 16)
+size = Vector2(64, 32)
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 0
@@ -12,11 +12,11 @@ collision_mask = 2
 script = ExtResource("1_oncs0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(64, 0)
+position = Vector2(96, 0)
 shape = SubResource("RectangleShape2D_oncs0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_n7q0t")
 
 [node name="CueExtendTimer" type="Timer" parent="."]

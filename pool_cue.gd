@@ -18,8 +18,9 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: RigidBody2D) -> void:
 	if body.mob_type == "goblin":
 		if not $CueExtendTimer.is_stopped():
-			body.apply_impulse(firing_vec * knockback_impulse)
 			$CollisionShape2D.set_deferred("disabled", true)
+			body.apply_impulse(firing_vec * knockback_impulse)
+			body.is_pool_shot = true
 
 
 func _on_cue_retract_timer_timeout() -> void:

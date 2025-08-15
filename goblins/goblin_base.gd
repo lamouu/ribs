@@ -9,6 +9,7 @@ signal player_hit
 @export var speed = 300
 @export var health = 100
 @export var knockback_impulse = 600000
+@export var pool_shot_knockback_impulse = 8000000
 @export var player_gravity = 20000
 @export var coeff_friction = 70
 
@@ -18,6 +19,7 @@ var distance
 var player_node
 var gravity_force
 var friction_force
+var is_pool_shot: bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,7 +37,7 @@ func follow_physics():
 	distance = position.distance_to(player_position)
 	direction = position.direction_to(player_position)
 	
-	print(str(position))
+	#print(str(position))
 	
 	gravity_force = direction * player_gravity
 	friction_force = - get_linear_velocity() * coeff_friction
@@ -54,7 +56,7 @@ func _on_player_hit(damage_source):
 	go_red()
 
 func get_pushed():
-	print(distance)
+	#print(distance)
 	apply_impulse(-direction * knockback_impulse * ((distance + 1) ** -0.5))
 
 func go_red():
@@ -62,3 +64,10 @@ func go_red():
 	#	$FlashTimer.start()
 	#	$CanvasModulate.set_color(Color(0.941176, 0.972549, 1, 1))
 	pass
+
+
+func _on_body_entered(body: Node) -> void:
+	if body.mob_type == "goblin":
+		if body.is_pool_shot == true:
+			print("goblin hit goblin")
+			apply_impulse(-direction * pool_shot_knockback_impulse * distance)
