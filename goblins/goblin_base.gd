@@ -34,7 +34,9 @@ func follow_physics():
 	player_position = player_node.position
 	distance = position.distance_to(player_position)
 	direction = position.direction_to(player_position)
-
+	
+	print(str(position))
+	
 	gravity_force = direction * player_gravity
 	friction_force = - get_linear_velocity() * coeff_friction
 
