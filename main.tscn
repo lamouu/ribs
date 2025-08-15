@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://terrain_tileset.tres" id="3_1bvp3"]
 
 [node name="Main" type="Node"]
+physics_interpolation_mode = 1
 script = ExtResource("1_h2yge")
 mob_scene = ExtResource("2_1bvp3")
 
