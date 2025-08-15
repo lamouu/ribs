@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c0k5smcwm6xdd" path="res://player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://b1cimcduepe2r" path="res://goblins/goblin.tscn" id="2_1bvp3"]
 [ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://terrain_tileset.tres" id="3_1bvp3"]
-[ext_resource type="Script" uid="uid://b0tt5qme76faq" path="res://crosshair.gd" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://b0njx3mk4ajv6" path="res://cursor.gd" id="5_lquwl"]
 
 [node name="Main" type="Node"]
 physics_interpolation_mode = 1
@@ -30,7 +30,7 @@ wait_time = 0.25
 wait_time = 1e+09
 autostart = true
 
-[node name="cursor" type="Node" parent="."]
+[node name="Cursor" type="Node" parent="."]
 script = ExtResource("5_lquwl")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

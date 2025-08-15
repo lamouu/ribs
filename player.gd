@@ -4,10 +4,11 @@ signal player_hit
 
 @export var dart_scene: PackedScene
 @export var pool_cue_scene: PackedScene
-@export var speed = 400
+@export var speed = 500
 @export var max_health: int = 3
 @export var health: int
 var score: int
+var velocity: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,21 +16,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var velocity = Vector2.ZERO
-	
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("move_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1
+	var target_velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	velocity = velocity.lerp(target_velocity, 1.0 - exp(-20 * get_physics_process_delta_time()))
 
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-
-	position += velocity * delta
+	position += velocity * delta * speed
 	
 	if Input.is_action_pressed("attack"):
 		if $AttackCooldown.is_stopped():
