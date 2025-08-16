@@ -12,14 +12,16 @@ func _ready() -> void:
 	movement = firing_vec * speed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	global_position += movement
 	
 func _on_body_entered(body: RigidBody2D) -> void:
 	if body.mob_type == "goblin":
 		if not $CueExtendTimer.is_stopped():
-			body.apply_impulse(firing_vec * knockback_impulse)
 			$CollisionShape2D.set_deferred("disabled", true)
+			body.apply_impulse(firing_vec * knockback_impulse)
+			body.is_pool_shot = true
+			body.is_first_pool_shot = true
 
 
 func _on_cue_retract_timer_timeout() -> void:

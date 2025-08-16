@@ -1,6 +1,5 @@
 extends Area2D
 
-signal mob_hit
 signal goblin_death
 
 @export var speed = 600

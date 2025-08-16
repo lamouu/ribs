@@ -1,20 +1,23 @@
 extends Node
 
-@export var mob_scene: PackedScene
-var goblin_scenes = [preload("res://goblins/goblin.tscn"), preload("res://goblins/rock_goblin.tscn"), preload("res://goblins/naked_goblin.tscn"), preload("res://goblins/pirate_goblin.tscn")]
+@export var goblin_base_scene: PackedScene
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$SpawnTimer.start()
 	$Player.position = $StartPosition.position
+	
+	#base goblin spawn test
+	#var goblin_base = goblin_base_scene.instantiate()
+	#add_child(goblin_base)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _on_spawn_timer_timeout() -> void:
-	var mob = goblin_scenes.pick_random().instantiate()
+	var mob = goblin_base_scene.instantiate()
 	
 	var mob_spawn_location
 	var mob_spawn_direction = ["up", "down", "left", "right"].pick_random()
@@ -34,6 +37,7 @@ func _on_spawn_timer_timeout() -> void:
 		mob_spawn_location = $Player.position + Vector2(x_offset, rnd_y_offset)
 
 	mob.position = mob_spawn_location
+	
 	
 	add_child(mob)
 	
