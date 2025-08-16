@@ -113,7 +113,7 @@ func _on_body_entered(body: Node) -> void:
 			is_pool_shot = true
 		else:
 			# applies a backwards 'bounce' when a goblin hits another goblin
-			apply_impulse(-position.direction_to(body.position) * linear_velocity.length() * 10)
+			apply_impulse(-position.direction_to(body.position) * (linear_velocity.length() + 100) * 10)
 
 #returns a random key from the goblin_type_dictionary
 func pick_random(dictionary: Dictionary):
