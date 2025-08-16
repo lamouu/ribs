@@ -2,8 +2,6 @@ extends RigidBody2D
 
 # THIS CAN BE REWRITTEN USING ClassType.new() TO MAKE NODES IN THE INSTANCED GOBLIN SCENES
 
-signal player_hit
-
 @export var mob_type = "goblin"
 @export var attack_damage = 1
 @export var speed = 300
@@ -49,14 +47,14 @@ func _ready() -> void:
 	player_node.player_hit.connect(_on_player_hit)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#if $FlashTimer:
 	#	if not $FlashTimer.is_stopped():
 	#		$CanvasModulate.set_color(Color(0.980392, 0.921569, 0.843137, 1))
 	pass
 
 
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 	follow_physics()
 
 
@@ -103,7 +101,7 @@ func _on_body_entered(body: Node) -> void:
 
 #returns a random key from the goblin_type_dictionary
 func pick_random(dictionary: Dictionary):
-	var random_goblin_key = goblin_type_dictionary.keys().pick_random()
+	var random_goblin_key = dictionary.keys().pick_random()
 	return random_goblin_key
 
 

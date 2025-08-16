@@ -12,7 +12,7 @@ func _ready() -> void:
 	movement = firing_vec * speed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	global_position += movement
 	
 func _on_body_entered(body: RigidBody2D) -> void:
