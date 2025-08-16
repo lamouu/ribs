@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oncs0"]
 size = Vector2(64, 32)
 
-[node name="Area2D" type="Area2D"]
+[node name="pool_cue" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_oncs0")

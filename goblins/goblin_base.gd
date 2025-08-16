@@ -18,6 +18,7 @@ var player_node
 var gravity_force
 var friction_force
 var is_pool_shot: bool = false
+var is_first_pool_shot: bool = false
 var goblin_type_dictionary: Dictionary = {
 	"basic_goblin": 1,
 	"naked_goblin": 2,
@@ -114,6 +115,12 @@ func _on_body_entered(body: Node) -> void:
 		else:
 			# applies a backwards 'bounce' when a goblin hits another goblin
 			apply_impulse(-position.direction_to(body.position) * (linear_velocity.length() + 100) * 10)
+		
+		if body.is_first_pool_shot == true:
+			body.health -= 50
+			if body.health <= 0:
+				body.queue_free()
+			body.is_first_pool_shot = false
 
 #returns a random key from the goblin_type_dictionary
 func pick_random(dictionary: Dictionary):

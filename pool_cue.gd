@@ -21,6 +21,7 @@ func _on_body_entered(body: RigidBody2D) -> void:
 			$CollisionShape2D.set_deferred("disabled", true)
 			body.apply_impulse(firing_vec * knockback_impulse)
 			body.is_pool_shot = true
+			body.is_first_pool_shot = true
 
 
 func _on_cue_retract_timer_timeout() -> void:
