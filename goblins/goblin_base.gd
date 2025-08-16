@@ -25,6 +25,8 @@ var goblin_type_dictionary: Dictionary = {
 	"rock_goblin": 4
 }
 var goblin_type
+var velocity_a
+var velocity_b
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,7 +53,11 @@ func _process(_delta: float) -> void:
 	#if $FlashTimer:
 	#	if not $FlashTimer.is_stopped():
 	#		$CanvasModulate.set_color(Color(0.980392, 0.921569, 0.843137, 1))
-	pass
+	for CurrentVelocity in [1, 2]:
+		if CurrentVelocity == 1:
+			velocity_a = linear_velocity
+		if CurrentVelocity == 2:
+			velocity_b = linear_velocity
 
 
 func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
@@ -97,15 +103,18 @@ func _on_body_entered(body: Node) -> void:
 	if body.mob_type == "goblin":
 		if body.is_pool_shot == true:
 			# makes this goblin inherit the triggering goblin's velocity (not sure about this line)
-			linear_velocity = body.linear_velocity
-			# applies impulse away from player (not sure about this line)
-			apply_impulse(-direction * pool_shot_knockback_impulse)
-			# starts timer that disables this goblin's movement for duration, and tells it to stop being a pool shot
+			if body.linear_velocity == body.velocity_a:
+				linear_velocity = body.velocity_b
+			elif body.linear_velocity == body.velocity_b:
+				linear_velocity = body.velocity_a
+			# starts timer that disables this goblin's movement for duration, then tells it to stop being a pool shot
 			$PoolShotTimer.start()
 			# allows this goblin to trigger this signal for other goblins
 			is_pool_shot = true
-			# disables triggering goblin's capability to trigger this signal (makes each goblin only knock back one goblin)
-			body.is_pool_shot = false
+		else:
+			print(name)
+			# applies a backwards 'bounce' when a goblin hits another goblin
+			apply_impulse(-position.direction_to(body.position) * linear_velocity.length() * 10)
 
 #returns a random key from the goblin_type_dictionary
 func pick_random(dictionary: Dictionary):
