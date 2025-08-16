@@ -7,7 +7,7 @@ extends RigidBody2D
 @export var speed = 300
 @export var health = 100
 @export var knockback_impulse = 600000
-@export var pool_shot_knockback_impulse = 800000
+@export var pool_shot_knockback_impulse = 80
 @export var player_gravity = 20000
 @export var coeff_friction = 70
 
@@ -55,7 +55,8 @@ func _process(_delta: float) -> void:
 
 
 func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
-	follow_physics()
+	if $PoolShotTimer.is_stopped():
+		follow_physics()
 
 
 func follow_physics():
@@ -91,13 +92,20 @@ func go_red():
 	#	$CanvasModulate.set_color(Color(0.941176, 0.972549, 1, 1))
 	pass
 
-
+# detects collision with goblins that have been knocked back by a pool shot
 func _on_body_entered(body: Node) -> void:
 	if body.mob_type == "goblin":
 		if body.is_pool_shot == true:
-			apply_impulse(-direction * knockback_impulse * ((distance + 1) ** -0.5))
+			# makes this goblin inherit the triggering goblin's velocity (not sure about this line)
+			linear_velocity = body.linear_velocity
+			# applies impulse away from player (not sure about this line)
+			apply_impulse(-direction * pool_shot_knockback_impulse)
+			# starts timer that disables this goblin's movement for duration, and tells it to stop being a pool shot
 			$PoolShotTimer.start()
+			# allows this goblin to trigger this signal for other goblins
 			is_pool_shot = true
+			# disables triggering goblin's capability to trigger this signal (makes each goblin only knock back one goblin)
+			body.is_pool_shot = false
 
 #returns a random key from the goblin_type_dictionary
 func pick_random(dictionary: Dictionary):
