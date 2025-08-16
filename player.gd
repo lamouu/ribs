@@ -28,8 +28,10 @@ func _process(delta: float) -> void:
 			add_child(dart)
 	
 	if Input.is_action_just_pressed("special_attack"):
-		var pool_cue = pool_cue_scene.instantiate()
-		add_child(pool_cue)
+		if $SpecialAttackCooldown.is_stopped():
+			$SpecialAttackCooldown.start()
+			var pool_cue = pool_cue_scene.instantiate()
+			add_child(pool_cue)
 
 func _on_body_entered(body: Node2D) -> void:
 	take_damage(body)
