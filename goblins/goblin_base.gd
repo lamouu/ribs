@@ -9,7 +9,7 @@ signal player_hit
 @export var speed = 300
 @export var health = 100
 @export var knockback_impulse = 600000
-@export var pool_shot_knockback_impulse = 8000000
+@export var pool_shot_knockback_impulse = 800000
 @export var player_gravity = 20000
 @export var coeff_friction = 70
 
@@ -97,11 +97,15 @@ func go_red():
 func _on_body_entered(body: Node) -> void:
 	if body.mob_type == "goblin":
 		if body.is_pool_shot == true:
-			print("goblin hit goblin")
-			apply_impulse(-direction * pool_shot_knockback_impulse * distance)
-			
+			apply_impulse(-direction * knockback_impulse * ((distance + 1) ** -0.5))
+			$PoolShotTimer.start()
+			is_pool_shot = true
 
 #returns a random key from the goblin_type_dictionary
 func pick_random(dictionary: Dictionary):
 	var random_goblin_key = goblin_type_dictionary.keys().pick_random()
 	return random_goblin_key
+
+
+func _on_pool_shot_timer_timeout() -> void:
+	is_pool_shot = false

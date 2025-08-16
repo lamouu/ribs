@@ -1,17 +1,15 @@
-[gd_scene load_steps=7 format=4 uid="uid://dxari6vm8lkmh"]
+[gd_scene load_steps=6 format=4 uid="uid://dxari6vm8lkmh"]
 
 [ext_resource type="Script" uid="uid://dengp85k58bvo" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://c0k5smcwm6xdd" path="res://player.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://b1cimcduepe2r" path="res://goblins/goblin.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://df2j1s5x27xm8" path="res://goblins/goblin_base.tscn" id="2_7mycd"]
 [ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://terrain_tileset.tres" id="3_1bvp3"]
-[ext_resource type="Script" path="res://crosshair.gd" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://csitsj7rw2po6" path="res://animated_cursor.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node"]
 physics_interpolation_mode = 1
 script = ExtResource("1_h2yge")
 goblin_base_scene = ExtResource("2_7mycd")
-mob_scene = ExtResource("2_1bvp3")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 visibility_layer = 2
@@ -22,7 +20,7 @@ tile_set = ExtResource("3_1bvp3")
 collision_enabled = false
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.5
 
 [node name="StartPosition" type="Marker2D" parent="."]
 
@@ -32,7 +30,8 @@ wait_time = 0.25
 wait_time = 1e+09
 autostart = true
 
-[node name="cursor" type="Node" parent="."]
-script = ExtResource("5_lquwl")
+[node name="Cursor" parent="." instance=ExtResource("5_lquwl")]
+visible = false
+speed_scale = 2.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

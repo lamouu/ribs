@@ -49,6 +49,7 @@ collision_layer = 3
 mass = 50.0
 gravity_scale = 0.0
 lock_rotation = true
+contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_q3hsk")
 
@@ -70,4 +71,8 @@ shape = SubResource("RectangleShape2D_wwx14")
 wait_time = 0.1
 one_shot = true
 
+[node name="PoolShotTimer" type="Timer" parent="."]
+wait_time = 0.2
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="PoolShotTimer" to="." method="_on_pool_shot_timer_timeout"]
