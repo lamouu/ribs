@@ -112,7 +112,6 @@ func _on_body_entered(body: Node) -> void:
 			# allows this goblin to trigger this signal for other goblins
 			is_pool_shot = true
 		else:
-			print(name)
 			# applies a backwards 'bounce' when a goblin hits another goblin
 			apply_impulse(-position.direction_to(body.position) * linear_velocity.length() * 10)
 
