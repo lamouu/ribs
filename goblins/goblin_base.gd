@@ -21,33 +21,16 @@ var gravity_force
 var friction_force
 var is_pool_shot: bool = false
 var is_first_pool_shot: bool = false
-#var goblin_type_dictionary: Dictionary = {
-#	"basic_goblin": 1,
-#	"naked_goblin": 2,
-#	"pirate_goblin": 3,
-#	"rock_goblin": 4
-#}
 var velocity_a
 var velocity_b
 var goblin_type
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# calls a function in goblin_type_resource that returns a random type, and assigns goblin_type_resource variables
 	goblin_type = goblin_type_resource.get_random_type()
 	$Sprite2D.texture = goblin_type_resource.texture
-	#Chooses a random goblin_type using pick_random function
-	#goblin_type = pick_random(goblin_type_dictionary)
 	
-	#Sets Sprite2D texture to the goblin_type corresponding image
-	#if goblin_type == "basic_goblin":
-	#	$Sprite2D.texture = load("res://art/goblins/basic_goblin.png")
-	#elif goblin_type == "naked_goblin":
-	#	$Sprite2D.texture = load("res://art/goblins/naked_goblin.png")
-	#elif goblin_type == "pirate_goblin":
-	#	$Sprite2D.texture = load("res://art/goblins/pirate_goblin.png")
-	#elif goblin_type == "rock_goblin":
-	#	$Sprite2D.texture = load("res://art/goblins/rock_goblin.png")
-		
 	#setup from old goblin types
 	player_node = get_node("/root/Main/Player")
 	follow_physics()
