@@ -1,7 +1,9 @@
 extends Node
 
+@export var goblin_resource: Resource
 @export var goblin_base_scene: PackedScene
 var rng = RandomNumberGenerator.new()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,7 +39,6 @@ func _on_spawn_timer_timeout() -> void:
 		mob_spawn_location = $Player.position + Vector2(x_offset, rnd_y_offset)
 
 	mob.position = mob_spawn_location
-	
 	
 	add_child(mob)
 	
