@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=4 uid="uid://dxari6vm8lkmh"]
+[gd_scene load_steps=7 format=4 uid="uid://dxari6vm8lkmh"]
 
 [ext_resource type="Script" uid="uid://dengp85k58bvo" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://c0k5smcwm6xdd" path="res://player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://df2j1s5x27xm8" path="res://goblins/goblin_base.tscn" id="2_7mycd"]
+[ext_resource type="Resource" uid="uid://d3n1lsxvpuqn4" path="res://resources/goblin_type_resource.tres" id="2_272bh"]
 [ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://terrain_tileset.tres" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://csitsj7rw2po6" path="res://animated_cursor.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node"]
 physics_interpolation_mode = 1
 script = ExtResource("1_h2yge")
+goblin_resource = ExtResource("2_272bh")
 goblin_base_scene = ExtResource("2_7mycd")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

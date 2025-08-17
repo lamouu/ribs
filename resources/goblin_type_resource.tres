@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="goblin_type" load_steps=6 format=3 uid="uid://d3n1lsxvpuqn4"]
+
+[ext_resource type="Texture2D" uid="uid://cr6824pfjrfd" path="res://art/goblins/basic_goblin.png" id="1_l3187"]
+[ext_resource type="Script" uid="uid://0jfe063r65ce" path="res://resources/goblin_type_resource.gd" id="1_tup87"]
+[ext_resource type="Texture2D" uid="uid://bdk3iavtn8w6g" path="res://art/goblins/naked_goblin.png" id="2_j7hiq"]
+[ext_resource type="Texture2D" uid="uid://djgmt1sioufxq" path="res://art/goblins/pirate_goblin.png" id="3_v254l"]
+[ext_resource type="Texture2D" uid="uid://c1v6tti2hjfpk" path="res://art/goblins/rock_goblinv2.png" id="4_jm0ib"]
+
+[resource]
+script = ExtResource("1_tup87")
+basic_texture = ExtResource("1_l3187")
+naked_texture = ExtResource("2_j7hiq")
+pirate_texture = ExtResource("3_v254l")
+rock_texture = ExtResource("4_jm0ib")
+metadata/_custom_type_script = "uid://0jfe063r65ce"
