@@ -3,17 +3,14 @@ extends Node
 @export var goblin_resource: Resource
 @export var goblin_base_scene: PackedScene
 var player_camera_size
-var screen_size
 var rng = RandomNumberGenerator.new()
 var mob_spawn_zone
 var mob_spawn_location = Vector2(0, 0)
-var camera_top_position
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$SpawnTimer.start()
 	$Player.position = $StartPosition.position
-	screen_size = $'/root'.size
 	player_camera_size = get_viewport().size
 	
 	
@@ -103,7 +100,6 @@ func _on_spawn_timer_timeout() -> void:
 	print("the top of the map: ", map_top_position)
 	print("the bottom of the map: ", map_bottom_position)
 	print(camera_center)
-	print(screen_size)
 	print(player_camera_size)
 	
 	add_child(mob)
