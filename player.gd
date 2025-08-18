@@ -1,6 +1,7 @@
 extends Area2D
 
 signal player_hit
+signal player_really_hit
 
 @export var dart_scene: PackedScene
 @export var pool_cue_scene: PackedScene
@@ -47,6 +48,7 @@ func take_damage(damage_source):
 		$InvulnerabilityAnimation.play("damage_taken")
 		
 		player_hit.emit(damage_source)
+		player_really_hit.emit(health)
 
 
 func _on_invulnerability_timer_timeout() -> void:

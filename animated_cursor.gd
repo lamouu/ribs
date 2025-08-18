@@ -9,4 +9,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	Input.set_custom_mouse_cursor(sprite_frames.get_frame_texture(animation, frame), mouse_shape, Vector2(64, 64))
+	Input.set_custom_mouse_cursor(sprite_frames.get_frame_texture(animation, frame), mouse_shape, Vector2(32, 32))

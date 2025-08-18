@@ -1,8 +1,11 @@
 extends Node
 
+@onready var hearts_container = $CanvasLayer/HeartsContainer
 @export var goblin_resource: Resource
 @export var goblin_base_scene: PackedScene
+
 var player_camera_size
+var ham
 var rng = RandomNumberGenerator.new()
 var mob_spawn_zone
 var mob_spawn_location = Vector2(0, 0)
@@ -13,6 +16,10 @@ func _ready() -> void:
 	$Player.position = $StartPosition.position
 	player_camera_size = get_viewport().size
 	
+	
+	hearts_container.setMaxHearts($Player.max_health)
+	hearts_container.updateHearts($Player.health)
+	$Player.player_really_hit.connect(hearts_container.updateHearts)
 	
 	#base goblin spawn test
 	#var goblin_base = goblin_base_scene.instantiate()
