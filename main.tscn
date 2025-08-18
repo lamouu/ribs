@@ -3,19 +3,41 @@
 [ext_resource type="Script" uid="uid://dengp85k58bvo" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://c0k5smcwm6xdd" path="res://player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://df2j1s5x27xm8" path="res://goblins/goblin_base.tscn" id="2_7mycd"]
-[ext_resource type="Resource" uid="uid://d3n1lsxvpuqn4" path="res://Resources/goblin_type_resource.tres" id="2_272bh"]
+[ext_resource type="Resource" uid="uid://d3n1lsxvpuqn4" path="res://resources/goblin_type_resource.tres" id="2_272bh"]
 [ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://terrain_tileset.tres" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://csitsj7rw2po6" path="res://animated_cursor.tscn" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://b2f148a74gry3" path="res://texture_progress_bar.gd" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://c02ome8dto14" path="res://art/ui/healthbarUnder.png" id="7_kek77"]
 [ext_resource type="Texture2D" uid="uid://dsxl4jwtlp7wq" path="res://art/ui/healthbarProgress.png" id="8_4c57u"]
-[ext_resource type="PackedScene" uid="uid://b0oqolfo7141" path="res://hearts_container.tscn" id="10_4c57u"]
+[ext_resource type="PackedScene" path="res://hearts_container.tscn" id="10_4c57u"]
 
 [node name="Main" type="Node"]
 physics_interpolation_mode = 1
 script = ExtResource("1_h2yge")
 goblin_resource = ExtResource("2_272bh")
 goblin_base_scene = ExtResource("2_7mycd")
+
+[node name="Map" type="ColorRect" parent="."]
+visible = false
+offset_left = -1920.0
+offset_top = -1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1920.0
+offset_top = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+color = Color(1, 0, 1, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_set = ExtResource("3_1bvp3")
@@ -24,7 +46,6 @@ tile_set = ExtResource("3_1bvp3")
 tile_set = ExtResource("3_1bvp3")
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 2.0
 
 [node name="StartPosition" type="Marker2D" parent="."]
 
