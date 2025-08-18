@@ -1,7 +1,9 @@
 extends Node
 
+@onready var hearts_container = $CanvasLayer/HeartsContainer
 @export var goblin_resource: Resource
 @export var goblin_base_scene: PackedScene
+var ham
 var rng = RandomNumberGenerator.new()
 
 
@@ -9,6 +11,10 @@ var rng = RandomNumberGenerator.new()
 func _ready() -> void:
 	$SpawnTimer.start()
 	$Player.position = $StartPosition.position
+	
+	hearts_container.setMaxHearts($Player.max_health)
+	hearts_container.updateHearts($Player.health)
+	$Player.player_really_hit.connect(hearts_container.updateHearts)
 	
 	#base goblin spawn test
 	#var goblin_base = goblin_base_scene.instantiate()

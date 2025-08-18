@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://csitsj7rw2po6"]
 
 [ext_resource type="SpriteFrames" uid="uid://dh1rqbowjdil4" path="res://crosshair_sprite_frames.tres" id="1_p33m4"]
-[ext_resource type="Script" uid="uid://cug7f4qqi4hh3" path="res://animated_cursor.gd" id="9_kvnb6"]
+[ext_resource type="Script" path="res://animated_cursor.gd" id="9_kvnb6"]
 
 [node name="Cursor" type="AnimatedSprite2D"]
 sprite_frames = ExtResource("1_p33m4")

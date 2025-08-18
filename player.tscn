@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c0k5smcwm6xdd"]
+[gd_scene load_steps=12 format=3 uid="uid://c0k5smcwm6xdd"]
 
 [ext_resource type="Script" uid="uid://3l5j65gwnvjs" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://c33lg16lidlgn" path="res://dart.tscn" id="2_i3pqv"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bfy11m2vs0lr4" path="res://art/mikeV4.png" id="4_1jxqw"]
 [ext_resource type="Shader" uid="uid://gttttj6d68ci" path="res://main.gdshader" id="4_hqtel"]
 [ext_resource type="Script" uid="uid://bpmnrt0ujda68" path="res://canvas_layer.gd" id="4_sweqy"]
-[ext_resource type="PackedScene" uid="uid://b2udjrcll0hh1" path="res://hud.tscn" id="6_2hs0m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sweqy"]
 shader = ExtResource("4_hqtel")
@@ -130,8 +129,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_sweqy")
 }
 autoplay = "idle"
-
-[node name="HUD" parent="." instance=ExtResource("6_2hs0m")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-2, -128, 18, -124, 24, -108, 12, -78, 40, -72, 48, 18, 46, 100, -40, 98, -42, 16, -34, -72, -8, -78, -12, -90, -22, -100, -16, -122)
