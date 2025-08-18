@@ -5,8 +5,6 @@ extends Node
 var player_camera_size
 var screen_size
 var rng = RandomNumberGenerator.new()
-var spawn_buffer_y: float
-var spawn_buffer_x: float
 var mob_spawn_zone
 var mob_spawn_location = Vector2(0, 0)
 var camera_top_position
@@ -17,8 +15,7 @@ func _ready() -> void:
 	$Player.position = $StartPosition.position
 	screen_size = $'/root'.size
 	player_camera_size = get_viewport().size
-	spawn_buffer_y = (player_camera_size.y / 3)
-	spawn_buffer_x = (player_camera_size.x / 3)
+	
 	
 	#base goblin spawn test
 	#var goblin_base = goblin_base_scene.instantiate()
@@ -49,10 +46,10 @@ func _on_spawn_timer_timeout() -> void:
 	var player_camera_rightmost_position = camera_center.x + (player_camera_size.x / 2)
 	
 	#gets random x and y coordinates outside of the screen
-	var random_above_screen_vertical:float = randf_range((map_top_position + spawn_buffer_y) , player_camera_top_position * 1.1)
-	var random_below_screen_vertical:float = randf_range((map_bottom_position - spawn_buffer_y) , player_camera_bottom_position * 1.1)
-	var random_left_of_screen_horizontal: float = randf_range((map_leftmost_position + spawn_buffer_x), player_camera_leftmost_position * 1.1)
-	var random_right_of_screen_horizontal: float = randf_range((map_rightmost_position - spawn_buffer_x), player_camera_rightmost_position * 1.1)
+	var random_above_screen_vertical:float = randf_range((map_top_position) , player_camera_top_position * 1.1)
+	var random_below_screen_vertical:float = randf_range((map_bottom_position) , player_camera_bottom_position * 1.1)
+	var random_left_of_screen_horizontal: float = randf_range((map_leftmost_position), player_camera_leftmost_position * 1.1)
+	var random_right_of_screen_horizontal: float = randf_range((map_rightmost_position), player_camera_rightmost_position * 1.1)
 	
 	#gets random x and y coordinates from screen size
 	var random_y_coordinate = randf_range(map_top_position, map_bottom_position)
