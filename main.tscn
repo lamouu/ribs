@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://d3n1lsxvpuqn4" path="res://Resources/goblin_type_resource.tres" id="2_272bh"]
 [ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://terrain_tileset.tres" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://csitsj7rw2po6" path="res://animated_cursor.tscn" id="5_lquwl"]
-[ext_resource type="Script" path="res://texture_progress_bar.gd" id="7_272bh"]
+[ext_resource type="Script" uid="uid://b2f148a74gry3" path="res://texture_progress_bar.gd" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://c02ome8dto14" path="res://art/ui/healthbarUnder.png" id="7_kek77"]
 [ext_resource type="Texture2D" uid="uid://dsxl4jwtlp7wq" path="res://art/ui/healthbarProgress.png" id="8_4c57u"]
 [ext_resource type="PackedScene" uid="uid://b0oqolfo7141" path="res://hearts_container.tscn" id="10_4c57u"]
