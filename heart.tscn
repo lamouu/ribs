@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c68errl0tgie2"]
 
-[ext_resource type="Script" uid="uid://bgvy1o3kxq1bq" path="res://heart.gd" id="1_7p8dj"]
+[ext_resource type="Script" path="res://heart.gd" id="1_7p8dj"]
 [ext_resource type="Texture2D" uid="uid://uwdsi206v43s" path="res://art/ui/Heart.png" id="1_y26ic"]
 
 [node name="Panel" type="Panel"]

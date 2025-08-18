@@ -9,7 +9,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sweqy"]
 shader = ExtResource("4_hqtel")
-shader_parameter/solid_color = Vector4(0, 0, 0, 0)
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_hqtel"]
 length = 0.001
@@ -93,11 +95,9 @@ texture = ExtResource("4_1jxqw")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Shader" type="CanvasLayer" parent="Camera2D"]
-visible = false
 script = ExtResource("4_sweqy")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Shader"]
-visible = false
 top_level = true
 material = SubResource("ShaderMaterial_sweqy")
 anchors_preset = 15
