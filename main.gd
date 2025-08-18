@@ -48,20 +48,13 @@ func _on_spawn_timer_timeout() -> void:
 	var player_camera_leftmost_position = camera_center.x - (player_camera.size.x / 2)
 	var player_camera_rightmost_position = camera_center.x + (player_camera.size.x / 2)
 	
+	#gets random x and y coordinates outside of the screen
 	var random_above_screen_vertical:float = randf_range((map_top_position + spawn_buffer_y) , player_camera_top_position)
 	var random_below_screen_vertical:float = randf_range((map_bottom_position - spawn_buffer_y) , player_camera_bottom_position)
 	var random_left_of_screen_horizontal: float = randf_range((map_leftmost_position + spawn_buffer_x), player_camera_leftmost_position)
 	var random_right_of_screen_horizontal: float = randf_range((map_rightmost_position - spawn_buffer_x), player_camera_rightmost_position)
 	
-	#if mob_spawn_direction == "up":
-	#	mob_spawn_location = $Player.position + Vector2(rnd_x_offset, -y_offset)
-	#elif mob_spawn_direction == "down":
-	#	mob_spawn_location = $Player.position + Vector2(rnd_x_offset, y_offset)
-	#elif mob_spawn_direction == "left":
-	#	mob_spawn_location = $Player.position + Vector2(-x_offset, rnd_y_offset)
-	#elif mob_spawn_direction == "right":
-	#	mob_spawn_location = $Player.position + Vector2(x_offset, rnd_y_offset)
-	
+	#if the spawn location it outside the map, spawns on the opposite side of the screen
 	if random_above_screen_vertical <= map_top_position:
 		mob_spawn_vertical = "below"
 	elif random_below_screen_vertical >= map_bottom_position:
@@ -72,13 +65,14 @@ func _on_spawn_timer_timeout() -> void:
 	elif random_right_of_screen_horizontal >= map_rightmost_position:
 		mob_spawn_horizontal = "left"
 	
+	#combines a random x and random y coordinate to create a spawn location
 	match mob_spawn_vertical:
 		"above": mob_spawn_location.y = random_above_screen_vertical
 		"below": mob_spawn_location.y = random_below_screen_vertical
 	match mob_spawn_horizontal:
 		"left": mob_spawn_location.x = random_left_of_screen_horizontal
 		"right": mob_spawn_location.x = random_right_of_screen_horizontal
-	#var mob_spawn_location = Vector2(vertical_spawn_zone, horizontal_spawn_zone)
+	
 	mob.position = mob_spawn_location
 	print(player_camera_leftmost_position)
 	print(player_camera_rightmost_position)
