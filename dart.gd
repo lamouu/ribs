@@ -1,7 +1,5 @@
 extends Area2D
 
-signal goblin_death
-
 @export var speed = 600
 @export var damage = 50
 @export var weapon_spacing = 60
