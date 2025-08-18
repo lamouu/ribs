@@ -43,7 +43,6 @@ tile_set = ExtResource("3_1bvp3")
 collision_enabled = false
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 2.0
 
 [node name="StartPosition" type="Marker2D" parent="."]
 
