@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://3l5j65gwnvjs" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://c33lg16lidlgn" path="res://dart.tscn" id="2_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://ts7e4oe1d1vi" path="res://pool_cue.tscn" id="3_1jxqw"]
-[ext_resource type="Texture2D" uid="uid://bfy11m2vs0lr4" path="res://art/mikeV4.png" id="4_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://bfy11m2vs0lr4" path="res://art/mike.png" id="4_1jxqw"]
 [ext_resource type="Shader" uid="uid://gttttj6d68ci" path="res://main.gdshader" id="4_hqtel"]
 [ext_resource type="Script" uid="uid://bpmnrt0ujda68" path="res://canvas_layer.gd" id="4_sweqy"]
 

@@ -16,7 +16,7 @@ position = Vector2(96, 0)
 shape = SubResource("RectangleShape2D_oncs0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("1_n7q0t")
 
 [node name="CueExtendTimer" type="Timer" parent="."]
