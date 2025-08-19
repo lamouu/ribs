@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://df2j1s5x27xm8"]
+[gd_scene load_steps=9 format=3 uid="uid://df2j1s5x27xm8"]
 
 [ext_resource type="Script" uid="uid://bo368nww0xjyc" path="res://goblins/goblin_base.gd" id="1_q3hsk"]
-[ext_resource type="Texture2D" uid="uid://ugbtg655dqqo" path="res://art/goblinV2.png" id="2_n0lkc"]
 [ext_resource type="Resource" uid="uid://d3n1lsxvpuqn4" path="res://Resources/goblin_type_resource.tres" id="2_vars4"]
+[ext_resource type="Texture2D" uid="uid://bdk3iavtn8w6g" path="res://art/goblins/naked_goblin.png" id="3_n0lkc"]
 
 [sub_resource type="Animation" id="Animation_25ewh"]
 length = 0.001
@@ -69,6 +69,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwx14"]
 size = Vector2(50.5, 71)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vars4"]
+size = Vector2(44, 16)
+
 [node name="Goblin" type="RigidBody2D"]
 collision_layer = 3
 mass = 50.0
@@ -82,7 +85,7 @@ pool_shot_knockback_impulse = 222
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.18, 0.173)
-texture = ExtResource("2_n0lkc")
+texture = ExtResource("3_n0lkc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -100,6 +103,10 @@ one_shot = true
 
 [node name="PoolShotTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="GoblinCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(8, 29)
+shape = SubResource("RectangleShape2D_vars4")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="PoolShotTimer" to="." method="_on_pool_shot_timer_timeout"]
