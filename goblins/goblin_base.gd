@@ -117,3 +117,22 @@ func pick_random(dictionary: Dictionary):
 
 func _on_pool_shot_timer_timeout() -> void:
 	is_pool_shot = false
+
+
+func _on_goblin_hurtbox_area_entered(area: Area2D) -> void:
+	if area.collision_type == "dart":
+		area.queue_free()
+		health -= area.damage
+		if health <= 0:
+			player_node.score += 1
+			queue_free()
+		else:
+			apply_impulse(area.firing_vec * area.knockback_impulse)
+			# flash body red using canvasmodulate
+	if area.collision_type == "pool_cue":
+		if area.cue_is_out == true:
+			area.disable_collision()
+			apply_impulse(area.firing_vec * area.knockback_impulse)
+			is_pool_shot = true
+			is_first_pool_shot = true
+	

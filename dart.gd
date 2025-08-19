@@ -6,6 +6,7 @@ extends Area2D
 @export var char_offset = 35
 @export var knockback_impulse = 30000
 
+var collision_type = "dart"
 var velocity
 var player_node
 var firing_vec
@@ -25,11 +26,7 @@ func _process(delta: float) -> void:
 	global_position += velocity * delta
 
 
-func _on_body_entered(body: RigidBody2D) -> void:
 
-	if body.mob_type == "goblin":
-		#print("goblin hit")
-		goblin_hit(body)
 
 func goblin_hit(body):
 	queue_free()

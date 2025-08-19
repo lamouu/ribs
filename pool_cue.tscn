@@ -7,8 +7,8 @@
 size = Vector2(64, 32)
 
 [node name="pool_cue" type="Area2D"]
-collision_layer = 0
-collision_mask = 2
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_oncs0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
