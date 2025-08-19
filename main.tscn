@@ -18,7 +18,6 @@ goblin_resource = ExtResource("2_272bh")
 goblin_base_scene = ExtResource("2_7mycd")
 
 [node name="Map" type="ColorRect" parent="."]
-visible = false
 offset_left = -1920.0
 offset_top = -1080.0
 offset_right = 1920.0

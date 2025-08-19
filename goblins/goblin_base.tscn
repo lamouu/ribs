@@ -83,7 +83,7 @@ goblin_type_resource = ExtResource("2_vars4")
 pool_shot_knockback_impulse = 222
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.18, 0.173)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_n0lkc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -100,7 +100,7 @@ one_shot = true
 one_shot = true
 
 [node name="GoblinCollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(8, 29)
+position = Vector2(16, 40)
 shape = SubResource("RectangleShape2D_vars4")
 
 [node name="GoblinHurtbox" type="Area2D" parent="."]
@@ -108,7 +108,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoblinHurtbox"]
-position = Vector2(5, 2)
+position = Vector2(13, 6)
 shape = SubResource("RectangleShape2D_wwx14")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

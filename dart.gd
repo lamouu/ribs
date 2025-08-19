@@ -24,17 +24,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	global_position += velocity * delta
-
-
-
-
-func goblin_hit(body):
-	queue_free()
-	
-	body.health -= damage
-	if body.health <= 0:
-		player_node.score += 1
-		body.free()
-	else:
-		body.apply_impulse(firing_vec * knockback_impulse)
-		# flash body red using canvasmodulate

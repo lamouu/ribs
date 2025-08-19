@@ -11,6 +11,7 @@ extends RigidBody2D
 @export var pool_shot_knockback_impulse = 80
 @export var player_gravity = 20000
 @export var coeff_friction = 70
+@export var pool_damage = 100
 
 var texture: Texture
 var player_position: Vector2 = 	Vector2.ZERO
@@ -54,7 +55,7 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 
 
 func follow_physics():
-	player_position = player_node.position
+	player_position =  Vector2(player_node.position.x , (player_node.position.y + 30))
 	distance = position.distance_to(player_position)
 	direction = position.direction_to(player_position)
 	
@@ -104,7 +105,7 @@ func _on_body_entered(body: Node) -> void:
 			apply_impulse(-position.direction_to(body.position) * (linear_velocity.length() + 100) * 10)
 		
 		if body.is_first_pool_shot == true:
-			body.health -= 50
+			body.health -= pool_damage
 			if body.health <= 0:
 				body.queue_free()
 			body.is_first_pool_shot = false

@@ -11,13 +11,12 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_oncs0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(96, 0)
-shape = SubResource("RectangleShape2D_oncs0")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.35, 0.35)
 texture = ExtResource("1_n7q0t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(168, 0)
+shape = SubResource("RectangleShape2D_oncs0")
 
 [node name="CueExtendTimer" type="Timer" parent="."]
 wait_time = 0.6
