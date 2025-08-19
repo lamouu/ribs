@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://df2j1s5x27xm8"]
+[gd_scene load_steps=12 format=3 uid="uid://df2j1s5x27xm8"]
 
 [ext_resource type="Script" uid="uid://bo368nww0xjyc" path="res://goblins/goblin_base.gd" id="1_q3hsk"]
-[ext_resource type="Resource" uid="uid://d3n1lsxvpuqn4" path="res://resources/goblin_type_resource.tres" id="2_vars4"]
+[ext_resource type="Resource" uid="uid://d3n1lsxvpuqn4" path="res://Resources/goblin_type_resource.tres" id="2_vars4"]
 [ext_resource type="Texture2D" uid="uid://bdk3iavtn8w6g" path="res://art/goblins/naked_goblin.png" id="3_n0lkc"]
 
 [sub_resource type="Animation" id="Animation_25ewh"]
@@ -66,6 +66,19 @@ _data = {
 &"idle": SubResource("Animation_wwx14")
 }
 
+[sub_resource type="Animation" id="Animation_n0lkc"]
+resource_name = "goblin_hurt"
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_vars4"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jxjik"]
+_data = {
+&"RESET": SubResource("Animation_vars4"),
+&"goblin_hurt": SubResource("Animation_n0lkc")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vars4"]
 size = Vector2(44, 16)
 
@@ -73,6 +86,7 @@ size = Vector2(44, 16)
 size = Vector2(50.5, 71)
 
 [node name="Goblin" type="RigidBody2D"]
+self_modulate = Color(1, 0, 0, 0.100142)
 mass = 50.0
 gravity_scale = 0.0
 lock_rotation = true
@@ -83,7 +97,7 @@ goblin_type_resource = ExtResource("2_vars4")
 pool_shot_knockback_impulse = 222
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_n0lkc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -91,6 +105,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_87tty")
 }
 autoplay = "idle"
+
+[node name="HurtPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jxjik")
+}
 
 [node name="FlashTimer" type="Timer" parent="."]
 wait_time = 0.1
