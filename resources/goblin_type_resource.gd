@@ -10,7 +10,7 @@ var texture
 var speed
 var damage
 
-var types: Array = ["basic", "naked", "pirate", "rock"]
+var types: Array = ["basic", "naked", "pirate", "rock"]	
 
 func get_random_type():
 	type = types.pick_random()

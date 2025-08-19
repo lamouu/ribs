@@ -2,8 +2,8 @@ extends RigidBody2D
 
 # THIS CAN BE REWRITTEN USING ClassType.new() TO MAKE NODES IN THE INSTANCED GOBLIN SCENES
 
-@export var mob_type = "goblin"
 @export var goblin_type_resource: Resource
+@export var mob_type = "goblin"
 @export var attack_damage = 1
 @export var speed = 300
 @export var health = 100
@@ -11,7 +11,7 @@ extends RigidBody2D
 @export var pool_shot_knockback_impulse = 80
 @export var player_gravity = 20000
 @export var coeff_friction = 70
-@export var pool_damage = 100
+@export var pool_damage = 50
 
 var texture: Texture
 var player_position: Vector2 = 	Vector2.ZERO
@@ -32,7 +32,7 @@ func _ready() -> void:
 	goblin_type = goblin_type_resource.get_random_type()
 	$Sprite2D.texture = goblin_type_resource.texture
 	
-	#setup from old goblin types
+		#setup from old goblin types
 	player_node = get_node("/root/Main/Player")
 	follow_physics()
 	player_node.player_hit.connect(_on_player_hit)
@@ -87,15 +87,25 @@ func go_red():
 	#	$CanvasModulate.set_color(Color(0.941176, 0.972549, 1, 1))
 	pass
 
+func take_damage(damage):
+	health -= damage
+	if health <= 0:
+		queue_free()
+
 # detects collision with goblins that have been knocked back by a pool shot
 func _on_body_entered(body: Node) -> void:
 	if body.mob_type == "goblin":
-		if body.is_pool_shot == true:
+		if body.is_pool_shot == true or body.is_first_pool_shot == true:
 			# makes this goblin inherit the triggering goblin's velocity (not sure about this line)
 			if body.linear_velocity == body.velocity_a:
 				linear_velocity = body.velocity_b
 			elif body.linear_velocity == body.velocity_b:
 				linear_velocity = body.velocity_a
+			if body.is_pool_shot == true:
+				body.take_damage(pool_damage)
+			elif body.is_first_pool_shot == true:
+				body.take_damage(pool_damage)
+				body.is_first_pool_shot = false
 			# starts timer that disables this goblin's movement for duration, then tells it to stop being a pool shot
 			$PoolShotTimer.start()
 			# allows this goblin to trigger this signal for other goblins
@@ -104,11 +114,7 @@ func _on_body_entered(body: Node) -> void:
 			# applies a backwards 'bounce' when a goblin hits another goblin
 			apply_impulse(-position.direction_to(body.position) * (linear_velocity.length() + 100) * 10)
 		
-		if body.is_first_pool_shot == true:
-			body.health -= pool_damage
-			if body.health <= 0:
-				body.queue_free()
-			body.is_first_pool_shot = false
+		
 
 #returns a random key from the goblin_type_dictionary
 func pick_random(dictionary: Dictionary):
@@ -131,9 +137,7 @@ func _on_goblin_hurtbox_area_entered(area: Area2D) -> void:
 			apply_impulse(area.firing_vec * area.knockback_impulse)
 			# flash body red using canvasmodulate
 	if area.collision_type == "pool_cue":
-		if area.cue_is_out == true:
-			area.disable_collision()
-			apply_impulse(area.firing_vec * area.knockback_impulse)
-			is_pool_shot = true
-			is_first_pool_shot = true
+		area.disable_collision()
+		apply_impulse(area.firing_vec * area.knockback_impulse)
+		is_first_pool_shot = true
 	

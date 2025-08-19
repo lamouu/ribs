@@ -16,7 +16,8 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_n7q0t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(168, 0)
+position = Vector2(67, 0)
+scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_oncs0")
 
 [node name="CueExtendTimer" type="Timer" parent="."]
