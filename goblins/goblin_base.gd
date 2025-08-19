@@ -31,7 +31,6 @@ func _ready() -> void:
 	# calls a function in goblin_type_resource that returns a random type, and assigns goblin_type_resource variables
 	goblin_type = goblin_type_resource.get_random_type()
 	$Sprite2D.texture = goblin_type_resource.texture
-	
 		#setup from old goblin types
 	player_node = get_node("/root/Main/Player")
 	follow_physics()
@@ -55,7 +54,7 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 
 
 func follow_physics():
-	player_position =  Vector2(player_node.position.x , (player_node.position.y + 30))
+	player_position =  Vector2(player_node.position.x , (player_node.position.y))
 	distance = position.distance_to(player_position)
 	direction = position.direction_to(player_position)
 	
