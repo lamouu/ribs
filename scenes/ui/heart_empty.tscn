@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhq6wawrgwiuv"]
+[gd_scene load_steps=2 format=3 uid="uid://ct0e6mgm8hx3b"]
 
 [ext_resource type="Script" uid="uid://bgvy1o3kxq1bq" path="res://scripts/ui/heart.gd" id="1_k701y"]
-[ext_resource type="Texture2D" uid="uid://cbq5rsbwjiw75" path="res://art/ui/empty_heart.png" id="2_k701y"]
 
 [node name="Panel" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
@@ -10,5 +9,4 @@ offset_bottom = 15.0
 script = ExtResource("1_k701y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_k701y")
 centered = false
