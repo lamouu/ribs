@@ -1,10 +1,10 @@
 [gd_scene load_steps=22 format=4 uid="uid://dxari6vm8lkmh"]
 
 [ext_resource type="Script" uid="uid://dengp85k58bvo" path="res://scripts/main.gd" id="1_choun"]
-[ext_resource type="Resource" uid="uid://d3n1lsxvpuqn4" path="res://resources/goblin_type_resource.tres" id="2_ya4ey"]
+[ext_resource type="Resource" uid="uid://d3n1lsxvpuqn4" path="res://resources/enemies/goblin_type_resource.tres" id="2_ya4ey"]
 [ext_resource type="Script" uid="uid://bo368nww0xjyc" path="res://scripts/enemies/goblin_base.gd" id="3_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://bdk3iavtn8w6g" path="res://art/goblins/naked_goblin.png" id="4_eb6dy"]
-[ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://resources/terrain_tileset.tres" id="4_trceg"]
+[ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://resources/terrain/terrain_tileset.tres" id="4_trceg"]
 [ext_resource type="PackedScene" uid="uid://c0k5smcwm6xdd" path="res://scenes/player.tscn" id="5_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://csitsj7rw2po6" path="res://scenes/ui/animated_cursor.tscn" id="6_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://c02ome8dto14" path="res://art/ui/healthbarUnder.png" id="7_jbj1t"]
