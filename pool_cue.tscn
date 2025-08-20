@@ -7,6 +7,7 @@
 size = Vector2(64, 32)
 
 [node name="pool_cue" type="Area2D"]
+visible = false
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_oncs0")
@@ -19,16 +20,14 @@ texture = ExtResource("1_n7q0t")
 position = Vector2(67, 0)
 scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_oncs0")
+disabled = true
 
 [node name="CueExtendTimer" type="Timer" parent="."]
-wait_time = 0.6
+wait_time = 0.1
 one_shot = true
-autostart = true
 
 [node name="CueRetractTimer" type="Timer" parent="."]
-wait_time = 1.2
 one_shot = true
-autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="CueExtendTimer" to="." method="_on_cue_extend_timer_timeout"]
