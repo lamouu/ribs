@@ -139,4 +139,5 @@ func _on_goblin_hurtbox_area_entered(area: Area2D) -> void:
 		area.disable_collision()
 		apply_impulse(area.firing_vec * area.knockback_impulse)
 		is_first_pool_shot = true
+		$PoolShotTimer.start()
 	
