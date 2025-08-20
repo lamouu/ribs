@@ -1,0 +1,136 @@
+[gd_scene load_steps=12 format=3 uid="uid://57bo7dxogg2s"]
+
+[ext_resource type="Script" uid="uid://bo368nww0xjyc" path="res://scripts/enemies/goblin_base.gd" id="1_dqsjv"]
+[ext_resource type="Resource" uid="uid://d3n1lsxvpuqn4" path="res://resources/goblin_type_resource.tres" id="2_fd0t4"]
+[ext_resource type="Texture2D" uid="uid://bdk3iavtn8w6g" path="res://art/goblins/naked_goblin.png" id="3_c3e3j"]
+
+[sub_resource type="Animation" id="Animation_25ewh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wwx14"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.00122589, 0.2, 0.398774, 0.6, 0.8),
+"transitions": PackedFloat32Array(0.307786, 2.82843, 0.307786, 2.82843, 0.307786),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -11), Vector2(0, 0), Vector2(0, -11), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.0523599, 0.0523599, -0.0523599]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_87tty"]
+_data = {
+&"RESET": SubResource("Animation_25ewh"),
+&"idle": SubResource("Animation_wwx14")
+}
+
+[sub_resource type="Animation" id="Animation_vars4"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_n0lkc"]
+resource_name = "goblin_hurt"
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jxjik"]
+_data = {
+&"RESET": SubResource("Animation_vars4"),
+&"goblin_hurt": SubResource("Animation_n0lkc")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vars4"]
+size = Vector2(36, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwx14"]
+size = Vector2(50.5, 71)
+
+[node name="Goblin" type="RigidBody2D"]
+self_modulate = Color(1, 0, 0, 0.100142)
+mass = 50.0
+gravity_scale = 0.0
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_dqsjv")
+goblin_type_resource = ExtResource("2_fd0t4")
+pool_shot_knockback_impulse = 222
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_c3e3j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_87tty")
+}
+autoplay = "idle"
+
+[node name="HurtPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jxjik")
+}
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="PoolShotTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GoblinCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_vars4")
+
+[node name="GoblinHurtbox" type="Area2D" parent="."]
+position = Vector2(-16, -35)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoblinHurtbox"]
+position = Vector2(13, 6)
+shape = SubResource("RectangleShape2D_wwx14")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="PoolShotTimer" to="." method="_on_pool_shot_timer_timeout"]
+[connection signal="area_entered" from="GoblinHurtbox" to="." method="_on_goblin_hurtbox_area_entered"]
