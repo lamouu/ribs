@@ -20,13 +20,19 @@ y_sort_enabled = true
 script = ExtResource("1_choun")
 goblin_base_scene = ExtResource("2_ya4ey")
 
-[node name="Map" type="ColorRect" parent="Main"]
+[node name="MapBorder" type="StaticBody2D" parent="Main"]
+
+[node name="Map" type="ColorRect" parent="Main/MapBorder"]
 visible = false
 offset_left = -1920.0
 offset_top = -1080.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Main/MapBorder"]
+scale = Vector2(2.07, 2.12)
+polygon = PackedVector2Array(-960, -544, -960, -28, -933, -28, -931, -511, 931, -511, 931, 511, -931, 511, -933, -28, -960, -28, -960, 540, 960, 540, 960, -540)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Main"]
 z_index = -1

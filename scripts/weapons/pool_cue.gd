@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var knockback_impulse = 90000
+@export var knockback_impulse = 20000
 
 var movement: Vector2
 var speed = 15
