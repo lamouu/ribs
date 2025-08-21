@@ -110,4 +110,3 @@ func _on_spawn_timer_timeout() -> void:
 	#print(player_camera_size)
 	
 	add_child(mob)
-	

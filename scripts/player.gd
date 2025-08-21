@@ -2,6 +2,7 @@ extends Area2D
 
 signal player_hit
 signal player_really_hit
+signal inventory_updated
 
 @export var dart_scene: PackedScene
 @export var pool_cue_scene: PackedScene
@@ -10,6 +11,8 @@ signal player_really_hit
 @export var health: int
 var score: int
 var velocity: Vector2
+
+var inventory: Inventory = Inventory.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,3 +56,17 @@ func take_damage(damage_source):
 
 func _on_invulnerability_timer_timeout() -> void:
 	$InvulnerabilityAnimation.stop()
+
+# debug buttons num1, num2, num3 (currently adding items)
+func _input(event):
+	if event.is_action_pressed("debug_1"):
+		inventory.add_item(Items.HAMMER)
+		inventory_updated.emit()
+		
+	if event.is_action_pressed("debug_2"):
+		inventory.add_item(Items.BURRITO)
+		inventory_updated.emit()
+		
+	if event.is_action_pressed("debug_3"):
+		inventory.add_item(Items.WHETSTONE)
+		inventory_updated.emit()

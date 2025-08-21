@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://t5cvtvdh68bj" path="res://art/ui/healthbarOver.png" id="9_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://b0oqolfo7141" path="res://scenes/ui/hearts_container.tscn" id="10_0ld40"]
 [ext_resource type="PackedScene" uid="uid://b3ylm7t5g7f2t" path="res://scenes/ui/item_container.tscn" id="13_trceg"]
-[ext_resource type="Script" uid="uid://b0jgaxie0sfsr" path="res://scripts/ui/item_container.gd" id="14_a8y0u"]
+[ext_resource type="Script" uid="uid://b0jgaxie0sfsr" path="res://scenes/ui/item_container.gd" id="14_a8y0u"]
 
 [sub_resource type="Animation" id="Animation_25ewh"]
 length = 0.001
@@ -177,10 +177,10 @@ roundtimer = NodePath("../../RoundTimer")
 [node name="HeartsContainer" parent="CanvasLayer" instance=ExtResource("10_0ld40")]
 
 [node name="ItemContainer" parent="CanvasLayer" instance=ExtResource("13_trceg")]
-offset_left = 1766.0
-offset_top = 98.0
-offset_right = 1878.0
-offset_bottom = 236.0
+offset_left = 1740.0
+offset_top = 129.0
+offset_right = 1852.0
+offset_bottom = 267.0
 script = ExtResource("14_a8y0u")
 
 [node name="RoundTimer" type="Timer" parent="."]

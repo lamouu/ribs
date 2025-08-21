@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dxari6vm8lkmh"]
+[gd_scene load_steps=22 format=4 uid="uid://dxari6vm8lkmh"]
 
 [ext_resource type="Script" uid="uid://dengp85k58bvo" path="res://scripts/main.gd" id="1_choun"]
 [ext_resource type="Resource" uid="uid://d3n1lsxvpuqn4" path="res://resources/enemies/goblin_type_resource.tres" id="2_ya4ey"]
@@ -12,8 +12,6 @@
 [ext_resource type="Script" uid="uid://b2f148a74gry3" path="res://scripts/ui/texture_progress_bar.gd" id="9_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://t5cvtvdh68bj" path="res://art/ui/healthbarOver.png" id="9_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://b0oqolfo7141" path="res://scenes/ui/hearts_container.tscn" id="10_0ld40"]
-[ext_resource type="PackedScene" uid="uid://b3ylm7t5g7f2t" path="res://scenes/ui/item_container.tscn" id="13_trceg"]
-[ext_resource type="Script" uid="uid://b0jgaxie0sfsr" path="res://scripts/ui/item_container.gd" id="14_a8y0u"]
 
 [sub_resource type="Animation" id="Animation_25ewh"]
 length = 0.001
@@ -139,6 +137,9 @@ tile_set = ExtResource("4_trceg")
 [node name="StartPosition" type="Marker2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("5_a8y0u")]
+speed = null
+max_health = null
+health = null
 
 [node name="GameTime" type="Timer" parent="."]
 wait_time = 1e+09
@@ -175,13 +176,6 @@ player = NodePath("../../Player")
 roundtimer = NodePath("../../RoundTimer")
 
 [node name="HeartsContainer" parent="CanvasLayer" instance=ExtResource("10_0ld40")]
-
-[node name="ItemContainer" parent="CanvasLayer" instance=ExtResource("13_trceg")]
-offset_left = 1766.0
-offset_top = 98.0
-offset_right = 1878.0
-offset_bottom = 236.0
-script = ExtResource("14_a8y0u")
 
 [node name="RoundTimer" type="Timer" parent="."]
 wait_time = 60.0
