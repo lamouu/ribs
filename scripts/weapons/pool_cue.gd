@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 			$CollisionShape2D.set_deferred("disabled", false)
 			$CueExtendTimer.start()
 
-	if rotates_with_mouse == false:
+	if not $CueExtendTimer.is_stopped():
 		position += movement
 	#if is_firing == false:
 	#	if is_returning == false:
@@ -41,13 +41,15 @@ func _process(_delta: float) -> void:
 	#	global_position += firing_vec * movement
 		
 	
-
+# Called until right click is let go, rotates the pool cue towards the mouse and pulls it backwards into position
 func rotate_to_mouse():
 	firing_vec = (get_viewport().get_mouse_position() - (get_viewport().get_visible_rect().size / 2) + Vector2(0, char_offset)).normalized()
 	rotation = firing_vec.angle()
 	position = (firing_vec * weapon_spacing) - Vector2(0, 70)
 	if visible == false:
 		visible = true
+	if not $CueReadyTimer.is_stopped():
+		weapon_spacing -= 2
 
 func _on_cue_retract_timer_timeout() -> void:
 	queue_free()
@@ -56,8 +58,7 @@ func disable_collision():
 		$CollisionShape2D.set_deferred("disabled", true)
 
 func _on_cue_extend_timer_timeout() -> void:
-	$CueRetractTimer.start()
-	speed = 3
-	movement = -firing_vec * speed
+	await get_tree().create_timer(0.2).timeout
+	queue_free()
 	$CollisionShape2D.set_deferred("disabled", true)
 	

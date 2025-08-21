@@ -32,7 +32,7 @@ func _ready() -> void:
 	goblin_type = goblin_type_resource.get_random_type()
 	$Sprite2D.texture = goblin_type_resource.texture
 		#setup from old goblin types
-	player_node = get_node("/root/Main/Player")
+	player_node = get_node("/root/Node/Main/Player")
 	follow_physics()
 	player_node.player_hit.connect(_on_player_hit)
 

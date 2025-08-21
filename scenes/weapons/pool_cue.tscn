@@ -29,6 +29,11 @@ one_shot = true
 [node name="CueRetractTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="CueReadyTimer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="CueExtendTimer" to="." method="_on_cue_extend_timer_timeout"]
 [connection signal="timeout" from="CueRetractTimer" to="." method="_on_cue_retract_timer_timeout"]

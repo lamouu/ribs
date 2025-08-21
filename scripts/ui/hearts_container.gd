@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-@onready var HeartGuiClass = preload("res://scenes/ui/heart.tscn")
+@export var HeartGuiClass: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

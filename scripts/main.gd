@@ -1,6 +1,6 @@
 extends Node
 
-@onready var hearts_container = $CanvasLayer/HeartsContainer
+@onready var hearts_container = $"../CanvasLayer/HeartsContainer"
 @export var goblin_resource: Resource
 @export var goblin_base_scene: PackedScene
 
