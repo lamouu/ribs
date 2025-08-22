@@ -5,7 +5,7 @@ var player_node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player_node = get_node("/root/Main/Player")
+	player_node = get_node("/root/Node/Main/Player")
 	player_node.inventory_updated.connect(_update_item_ui)
 
 func _update_item_ui():

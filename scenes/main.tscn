@@ -1,15 +1,8 @@
-[gd_scene load_steps=25 format=4 uid="uid://dxari6vm8lkmh"]
-
-[ext_resource type="Script" uid="uid://dengp85k58bvo" path="res://scripts/main.gd" id="1_choun"]
-[ext_resource type="Resource" uid="uid://d3n1lsxvpuqn4" path="res://resources/enemies/goblin_type_resource.tres" id="2_ya4ey"]
-[ext_resource type="Script" uid="uid://bo368nww0xjyc" path="res://scripts/enemies/goblin_base.gd" id="3_ya4ey"]
-[ext_resource type="Texture2D" uid="uid://bdk3iavtn8w6g" path="res://art/goblins/naked_goblin.png" id="4_eb6dy"]
-[ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://resources/terrain/terrain_tileset.tres" id="4_trceg"]
-[gd_scene load_steps=12 format=4 uid="uid://dxari6vm8lkmh"]
+[gd_scene load_steps=15 format=4 uid="uid://dxari6vm8lkmh"]
 
 [ext_resource type="Script" uid="uid://dengp85k58bvo" path="res://scripts/main.gd" id="1_choun"]
 [ext_resource type="PackedScene" uid="uid://57bo7dxogg2s" path="res://scenes/enemies/goblin_base.tscn" id="2_ya4ey"]
-[ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://resources/terrain_tileset.tres" id="4_trceg"]
+[ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://resources/terrain/terrain_tileset.tres" id="4_trceg"]
 [ext_resource type="PackedScene" uid="uid://c0k5smcwm6xdd" path="res://scenes/player.tscn" id="5_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://csitsj7rw2po6" path="res://scenes/ui/animated_cursor.tscn" id="6_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://c02ome8dto14" path="res://art/ui/healthbarUnder.png" id="7_jbj1t"]
@@ -17,10 +10,10 @@
 [ext_resource type="Script" uid="uid://b2f148a74gry3" path="res://scripts/ui/texture_progress_bar.gd" id="9_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://t5cvtvdh68bj" path="res://art/ui/healthbarOver.png" id="9_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://b0oqolfo7141" path="res://scenes/ui/hearts_container.tscn" id="10_0ld40"]
-[ext_resource type="PackedScene" uid="uid://b3ylm7t5g7f2t" path="res://scenes/ui/item_container.tscn" id="13_trceg"]
+[ext_resource type="PackedScene" uid="uid://c68errl0tgie2" path="res://scenes/ui/heart.tscn" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://3klxfy2pbpad" path="res://scenes/ui/item_container.tscn" id="13_trceg"]
 [ext_resource type="Script" uid="uid://b0jgaxie0sfsr" path="res://scripts/ui/item_container.gd" id="14_a8y0u"]
 [ext_resource type="Script" uid="uid://rqi0gjficd7x" path="res://scenes/stats.gd" id="15_jkv2x"]
-[ext_resource type="PackedScene" uid="uid://c68errl0tgie2" path="res://scenes/ui/heart.tscn" id="10_choun"]
 
 [node name="Node" type="Node"]
 physics_interpolation_mode = 1
@@ -118,6 +111,5 @@ script = ExtResource("15_jkv2x")
 wait_time = 60.0
 autostart = true
 
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="Main/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="Main/SpawnTimer" to="Main" method="_on_spawn_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b3ylm7t5g7f2t"]
+[gd_scene format=3 uid="uid://3klxfy2pbpad"]
 
 [node name="ItemContainer" type="VBoxContainer"]
 offset_right = 40.0
