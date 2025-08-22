@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbnjiqwmydktj"]
+
+[ext_resource type="Texture2D" uid="uid://bitwjc0sy56rk" path="res://art/ui/shops/gnomeShop.png" id="1_jinvx"]
+
+[node name="GnomeShop" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShopBackground" type="Sprite2D" parent="."]
+position = Vector2(1037, 667)
+texture = ExtResource("1_jinvx")
