@@ -7,6 +7,7 @@ signal inventory_updated
 @export var dart_scene: PackedScene
 @export var pool_cue_scene: PackedScene
 @export var speed = 500
+@export var damage = 1
 @export var max_health: int = 3
 @export var health: int
 var score: int

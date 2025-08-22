@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed = 600
-@export var damage = 50
+@export var dart_damage = 50
 @export var weapon_spacing = 60
 @export var char_offset = 35
 @export var knockback_impulse = 30000
@@ -10,6 +10,7 @@ var collision_type = "dart"
 var velocity
 var player_node
 var firing_vec
+var damage
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,4 +24,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	damage = dart_damage * player_node.damage
 	global_position += velocity * delta

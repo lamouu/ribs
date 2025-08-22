@@ -8,10 +8,6 @@ func _ready() -> void:
 	player_node = get_node("/root/Main/Player")
 	player_node.inventory_updated.connect(_update_item_ui)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _update_item_ui():
 	remove_current_items()
 	add_inventory_items()

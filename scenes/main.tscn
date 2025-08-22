@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dxari6vm8lkmh"]
+[gd_scene load_steps=25 format=4 uid="uid://dxari6vm8lkmh"]
 
 [ext_resource type="Script" uid="uid://dengp85k58bvo" path="res://scripts/main.gd" id="1_choun"]
 [ext_resource type="Resource" uid="uid://d3n1lsxvpuqn4" path="res://resources/enemies/goblin_type_resource.tres" id="2_ya4ey"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b0oqolfo7141" path="res://scenes/ui/hearts_container.tscn" id="10_0ld40"]
 [ext_resource type="PackedScene" uid="uid://b3ylm7t5g7f2t" path="res://scenes/ui/item_container.tscn" id="13_trceg"]
 [ext_resource type="Script" uid="uid://b0jgaxie0sfsr" path="res://scripts/ui/item_container.gd" id="14_a8y0u"]
+[ext_resource type="Script" uid="uid://rqi0gjficd7x" path="res://scenes/stats.gd" id="15_jkv2x"]
 
 [sub_resource type="Animation" id="Animation_25ewh"]
 length = 0.001
@@ -182,6 +183,13 @@ offset_top = 98.0
 offset_right = 1878.0
 offset_bottom = 236.0
 script = ExtResource("14_a8y0u")
+
+[node name="Stats" type="Label" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 18.0
+offset_right = 77.0
+offset_bottom = 58.0
+script = ExtResource("15_jkv2x")
 
 [node name="RoundTimer" type="Timer" parent="."]
 wait_time = 60.0
