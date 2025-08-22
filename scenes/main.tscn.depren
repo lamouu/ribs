@@ -1,19 +1,16 @@
-[gd_scene load_steps=24 format=4 uid="uid://dxari6vm8lkmh"]
+[gd_scene load_steps=21 format=4 uid="uid://dxari6vm8lkmh"]
 
 [ext_resource type="Script" uid="uid://dengp85k58bvo" path="res://scripts/main.gd" id="1_choun"]
-[ext_resource type="Resource" uid="uid://d3n1lsxvpuqn4" path="res://resources/enemies/goblin_type_resource.tres" id="2_ya4ey"]
+[ext_resource type="Resource" uid="uid://d3n1lsxvpuqn4" path="res://resources/goblin_type_resource.tres" id="2_ya4ey"]
 [ext_resource type="Script" uid="uid://bo368nww0xjyc" path="res://scripts/enemies/goblin_base.gd" id="3_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://bdk3iavtn8w6g" path="res://art/goblins/naked_goblin.png" id="4_eb6dy"]
-[ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://resources/terrain/terrain_tileset.tres" id="4_trceg"]
+[ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://resources/terrain_tileset.tres" id="4_trceg"]
 [ext_resource type="PackedScene" uid="uid://c0k5smcwm6xdd" path="res://scenes/player.tscn" id="5_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://csitsj7rw2po6" path="res://scenes/ui/animated_cursor.tscn" id="6_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://c02ome8dto14" path="res://art/ui/healthbarUnder.png" id="7_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://dsxl4jwtlp7wq" path="res://art/ui/healthbarProgress.png" id="8_muem4"]
 [ext_resource type="Script" uid="uid://b2f148a74gry3" path="res://scripts/ui/texture_progress_bar.gd" id="9_dp3eg"]
-[ext_resource type="Texture2D" uid="uid://t5cvtvdh68bj" path="res://art/ui/healthbarOver.png" id="9_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://b0oqolfo7141" path="res://scenes/ui/hearts_container.tscn" id="10_0ld40"]
-[ext_resource type="PackedScene" uid="uid://b3ylm7t5g7f2t" path="res://scenes/ui/item_container.tscn" id="13_trceg"]
-[ext_resource type="Script" uid="uid://b0jgaxie0sfsr" path="res://scenes/ui/item_container.gd" id="14_a8y0u"]
 
 [sub_resource type="Animation" id="Animation_25ewh"]
 length = 0.001
@@ -157,31 +154,25 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -420.0
-offset_top = -223.895
-offset_right = 392.0
-offset_bottom = -82.895
+offset_left = -180.0
+offset_top = -154.0
+offset_right = 184.0
+offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 0
-max_value = 77.0
-step = 0.0
-value = 17.0
-fill_mode = 1
-texture_under = ExtResource("8_muem4")
-texture_over = ExtResource("9_eb6dy")
-texture_progress = ExtResource("7_jbj1t")
+max_value = 60.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("7_jbj1t")
+texture_progress = ExtResource("8_muem4")
 script = ExtResource("9_dp3eg")
 player = NodePath("../../Player")
 roundtimer = NodePath("../../RoundTimer")
 
 [node name="HeartsContainer" parent="CanvasLayer" instance=ExtResource("10_0ld40")]
-
-[node name="ItemContainer" parent="CanvasLayer" instance=ExtResource("13_trceg")]
-offset_left = 1740.0
-offset_top = 129.0
-offset_right = 1852.0
-offset_bottom = 267.0
-script = ExtResource("14_a8y0u")
 
 [node name="RoundTimer" type="Timer" parent="."]
 wait_time = 60.0
