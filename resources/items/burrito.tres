@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cmveum71l8dla"]
+
+[ext_resource type="Script" uid="uid://cv74tsweva3p1" path="res://scripts/items/classes/item.gd" id="1_x0i1c"]
+[ext_resource type="Texture2D" uid="uid://mx2ysjm0504v" path="res://art/items/burrito.png" id="2_muf6a"]
+
+[resource]
+script = ExtResource("1_x0i1c")
+item_name = "Burrito"
+texture = ExtResource("2_muf6a")
+metadata/_custom_type_script = "uid://cv74tsweva3p1"
