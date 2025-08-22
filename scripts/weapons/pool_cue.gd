@@ -14,6 +14,7 @@ var rotates_with_mouse = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	position -= Vector2(0, 50)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -43,7 +44,8 @@ func _process(_delta: float) -> void:
 	
 # Called until right click is let go, rotates the pool cue towards the mouse and pulls it backwards into position
 func rotate_to_mouse():
-	firing_vec = (get_viewport().get_mouse_position() - (get_viewport().get_visible_rect().size / 2) + Vector2(0, char_offset)).normalized()
+	firing_vec = ((global_position - position) - Vector2(0, 70)).direction_to(get_global_mouse_position())
+	print(firing_vec)
 	rotation = firing_vec.angle()
 	position = (firing_vec * weapon_spacing) - Vector2(0, 70)
 	if visible == false:

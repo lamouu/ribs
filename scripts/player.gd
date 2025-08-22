@@ -9,8 +9,9 @@ signal inventory_updated
 @export var max_health: int = 3
 @export var health: int
 var score: int
-var collision_type = "Player"
- 
+
+var collision_type = "player"
+
 var base_stats = {
 	speed = 500,
 	attack_damage = 1,
