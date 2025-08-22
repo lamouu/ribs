@@ -108,7 +108,7 @@ func _on_body_entered(body: Node) -> void:
 		else:
 			# applies a backwards 'bounce' when a goblin hits another goblin
 			apply_impulse(-position.direction_to(body.position) * (linear_velocity.length() + 100) * 10)
-	if body.collision_type == "Player":
+	if body.collision_type == "player":
 		body.take_damage(attack_damage)
 
 

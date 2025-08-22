@@ -44,7 +44,8 @@ func _process(_delta: float) -> void:
 	
 # Called until right click is let go, rotates the pool cue towards the mouse and pulls it backwards into position
 func rotate_to_mouse():
-	firing_vec = global_position.direction_to(get_global_mouse_position())
+	firing_vec = ((global_position - position) - Vector2(0, 70)).direction_to(get_global_mouse_position())
+	print(firing_vec)
 	rotation = firing_vec.angle()
 	position = (firing_vec * weapon_spacing) - Vector2(0, 70)
 	if visible == false:

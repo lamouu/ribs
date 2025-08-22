@@ -11,7 +11,7 @@ signal inventory_updated
 @export var max_health: int = 3
 @export var health: int
 var score: int
-var collision_type = "Player"
+var collision_type = "player"
 
 var inventory: Inventory = Inventory.new()
 
