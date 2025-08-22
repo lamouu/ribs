@@ -16,6 +16,8 @@ func _input(event):
 			show_shop()
 
 func show_shop():
+	$CanvasLayer/GnomeShop.roll_items()
+	
 	$CanvasLayer/GnomeShop.show()
 	$CanvasLayer/TextureProgressBar.hide()
 	$CanvasLayer/HeartsContainer.hide()
