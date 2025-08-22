@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbnjiqwmydktj"]
+
+[ext_resource type="Script" uid="uid://bt4im6pvye6cu" path="res://scripts/ui/shops/gnome_shop.gd" id="1_0fjnp"]
+[ext_resource type="Texture2D" uid="uid://bitwjc0sy56rk" path="res://art/ui/shops/gnomeShop.png" id="1_jinvx"]
+[ext_resource type="Texture2D" uid="uid://mx2ysjm0504v" path="res://art/items/burrito.png" id="3_ba66w"]
+[ext_resource type="Texture2D" uid="uid://brc5uhjc5aww4" path="res://art/items/hammer.png" id="4_xvbf5"]
+[ext_resource type="Texture2D" uid="uid://c0joir8mbq8ir" path="res://art/items/whetstone.png" id="5_nssha"]
+
+[node name="GnomeShop" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0fjnp")
+
+[node name="ShopBackground" type="Sprite2D" parent="."]
+position = Vector2(1037, 667)
+texture = ExtResource("1_jinvx")
+
+[node name="Item1" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 725.0
+offset_top = 512.0
+offset_right = 945.0
+offset_bottom = 732.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("3_ba66w")
+stretch_mode = 3
+
+[node name="Item2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 974.0
+offset_top = 513.0
+offset_right = 1194.0
+offset_bottom = 735.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("4_xvbf5")
+stretch_mode = 3
+
+[node name="Item3" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1201.0
+offset_top = 513.0
+offset_right = 1434.0
+offset_bottom = 733.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("5_nssha")
+stretch_mode = 3
+
+[node name="Refresh" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.734
+anchor_top = 0.5
+anchor_right = 0.734
+anchor_bottom = 0.5
+offset_left = -62.28
+offset_top = -62.0
+offset_right = 59.72
+offset_bottom = 78.0
+
+[connection signal="pressed" from="Item1" to="." method="_on_item_1_pressed"]
+[connection signal="pressed" from="Item2" to="." method="_on_item_2_pressed"]
+[connection signal="pressed" from="Item3" to="." method="_on_item_3_pressed"]
+[connection signal="pressed" from="Refresh" to="." method="_on_refresh_pressed"]
