@@ -18,12 +18,6 @@ var base_stats = {
 	attack_speed = 0.25
 }
 
-# player buffs
-var speed_buff := 1.0
-var attack_damage_buff := 1.0
-var attack_speed_buff := 1.0
-var buff_array = [speed_buff, attack_damage_buff, attack_speed_buff]
-
 var inventory: Inventory = Inventory.new()
 
 # Called when the node enters the scene tree for the first time.
