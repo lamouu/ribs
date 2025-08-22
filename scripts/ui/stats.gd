@@ -12,4 +12,4 @@ func _ready() -> void:
 	update_stats()
 
 func update_stats():
-	text = "speed: " + str(player_node.speed) + "\ndamage: " + str(player_node.damage) + "\nattack speed: " + str(attack_cooldown_node.wait_time)
+	text = "speed: " + str(player_node.stats.speed) + "\ndamage: " + str(player_node.stats.attack_damage) + "\nattack speed: " + str(player_node.stats.attack_speed)

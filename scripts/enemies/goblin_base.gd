@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-# THIS CAN BE REWRITTEN USING ClassType.new() TO MAKE NODES IN THE INSTANCED GOBLIN SCENES
+@onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
 
 @export var goblin_type_resource: Resource
 @export var mob_type = "goblin"
@@ -32,6 +32,7 @@ func _ready() -> void:
 	# calls a function in goblin_type_resource that returns a random type, and assigns goblin_type_resource variables
 	goblin_type = goblin_type_resource.get_random_type()
 	$Sprite2D.texture = goblin_type_resource.texture
+	$TextureProgressBar.hide()
 		#setup from old goblin types
 	player_node = get_node("/root/Node/Main/Player")
 	follow_physics()
@@ -139,3 +140,12 @@ func _on_goblin_hurtbox_area_entered(area: Area2D) -> void:
 		linear_velocity = Vector2(0, 0)
 		apply_impulse(area.firing_vec * area.knockback_impulse)
 		is_first_pool_shot = true
+
+	$TextureProgressBar.show()
+	$TextureProgressBar.value = 100 - health
+	
+
+
+func _on_player_body_entered(body: CharacterBody2D) -> void:
+	body.take_damage(attack_damage)
+

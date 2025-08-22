@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://57bo7dxogg2s"]
+[gd_scene load_steps=14 format=3 uid="uid://57bo7dxogg2s"]
 
 [ext_resource type="Script" uid="uid://bo368nww0xjyc" path="res://scripts/enemies/goblin_base.gd" id="1_dqsjv"]
 [ext_resource type="Resource" uid="uid://d3n1lsxvpuqn4" path="res://resources/enemies/goblin_type_resource.tres" id="2_fd0t4"]
 [ext_resource type="Texture2D" uid="uid://bdk3iavtn8w6g" path="res://art/goblins/naked_goblin.png" id="3_c3e3j"]
+[ext_resource type="Texture2D" uid="uid://dbehaumo54qgx" path="res://art/ui/goblinhealthProgress.png" id="4_c3e3j"]
+[ext_resource type="Texture2D" uid="uid://cgh2qveedkquu" path="res://art/ui/goblinhealthUnder.png" id="5_w45jx"]
 
 [sub_resource type="Animation" id="Animation_25ewh"]
 length = 0.001
@@ -133,7 +135,17 @@ collision_mask = 2
 position = Vector2(13, 6)
 shape = SubResource("RectangleShape2D_wwx14")
 
-[connection signal="body_entered" from="." to="." method="_on_player_body_entered"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -18.0
+offset_top = -48.0
+offset_right = 293.0
+offset_bottom = 5.0
+scale = Vector2(0.135, 0.135)
+fill_mode = 1
+texture_under = ExtResource("4_c3e3j")
+texture_progress = ExtResource("5_w45jx")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_player_body_entered"]
 [connection signal="timeout" from="PoolShotTimer" to="." method="_on_pool_shot_timer_timeout"]
 [connection signal="area_entered" from="GoblinHurtbox" to="." method="_on_goblin_hurtbox_area_entered"]

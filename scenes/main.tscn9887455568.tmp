@@ -1,9 +1,7 @@
-[gd_scene load_steps=17 format=4 uid="uid://dxari6vm8lkmh"]
+[gd_scene load_steps=15 format=4 uid="uid://dxari6vm8lkmh"]
 
 [ext_resource type="Script" uid="uid://dengp85k58bvo" path="res://scripts/main.gd" id="1_choun"]
-[ext_resource type="Script" uid="uid://rq78n4ysdu0a" path="res://scripts/topnode.gd" id="1_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://57bo7dxogg2s" path="res://scenes/enemies/goblin_base.tscn" id="2_ya4ey"]
-[ext_resource type="Script" uid="uid://cslm3puurm88w" path="res://scenes/map_border.gd" id="3_jbj1t"]
 [ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://resources/terrain/terrain_tileset.tres" id="4_trceg"]
 [ext_resource type="PackedScene" uid="uid://c0k5smcwm6xdd" path="res://scenes/player.tscn" id="5_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://csitsj7rw2po6" path="res://scenes/ui/animated_cursor.tscn" id="6_jkv2x"]
@@ -15,22 +13,17 @@
 [ext_resource type="PackedScene" uid="uid://c68errl0tgie2" path="res://scenes/ui/heart.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://3klxfy2pbpad" path="res://scenes/ui/item_container.tscn" id="13_trceg"]
 [ext_resource type="Script" uid="uid://b0jgaxie0sfsr" path="res://scripts/ui/item_container.gd" id="14_a8y0u"]
-[ext_resource type="Script" uid="uid://rqi0gjficd7x" path="res://scripts/ui/stats.gd" id="15_jkv2x"]
-[ext_resource type="PackedScene" uid="uid://bbnjiqwmydktj" path="res://scenes/ui/shop/gnome_shop.tscn" id="16_jbj1t"]
+[ext_resource type="Script" uid="uid://rqi0gjficd7x" path="res://scenes/stats.gd" id="15_jkv2x"]
 
 [node name="Node" type="Node"]
-process_mode = 3
 physics_interpolation_mode = 1
-script = ExtResource("1_jkv2x")
 
 [node name="Main" type="Node2D" parent="."]
-process_mode = 1
 y_sort_enabled = true
 script = ExtResource("1_choun")
 goblin_base_scene = ExtResource("2_ya4ey")
 
 [node name="MapBorder" type="StaticBody2D" parent="Main"]
-script = ExtResource("3_jbj1t")
 
 [node name="Map" type="ColorRect" parent="Main/MapBorder"]
 visible = false
@@ -64,7 +57,6 @@ wait_time = 1e+09
 autostart = true
 
 [node name="Cursor" parent="Main" instance=ExtResource("6_jkv2x")]
-process_mode = 3
 visible = false
 scale = Vector2(0.2, 0.2)
 speed_scale = 2.0
@@ -74,7 +66,6 @@ wait_time = 60.0
 autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-process_mode = 1
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("player", "roundtimer")]
 anchors_preset = 7
@@ -116,10 +107,7 @@ offset_right = 77.0
 offset_bottom = 58.0
 script = ExtResource("15_jkv2x")
 
-[node name="GnomeShop" parent="CanvasLayer" instance=ExtResource("16_jbj1t")]
-
 [node name="RoundTimer" type="Timer" parent="."]
-process_mode = 1
 wait_time = 60.0
 autostart = true
 

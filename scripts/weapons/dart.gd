@@ -26,5 +26,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	damage = dart_damage * player_node.damage
+	damage = dart_damage * player_node.stats.attack_damage
 	global_position += velocity * delta
