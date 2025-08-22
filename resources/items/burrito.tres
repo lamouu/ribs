@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cmveum71l8dla"]
+[gd_resource type="Resource" script_class="SimpleBuffItem" load_steps=3 format=3 uid="uid://cmveum71l8dla"]
 
-[ext_resource type="Script" uid="uid://cv74tsweva3p1" path="res://scripts/items/classes/item.gd" id="1_x0i1c"]
+[ext_resource type="Script" uid="uid://225yvscibdem" path="res://scripts/items/classes/simple_buff_item.gd" id="1_muf6a"]
 [ext_resource type="Texture2D" uid="uid://mx2ysjm0504v" path="res://art/items/burrito.png" id="2_muf6a"]
 
 [resource]
-script = ExtResource("1_x0i1c")
+script = ExtResource("1_muf6a")
+speed_buff = 1.1
+attack_damage_buff = 1.0
+attack_speed_buff = 1.0
 item_name = "Burrito"
 texture = ExtResource("2_muf6a")
+unique = false
 metadata/_custom_type_script = "uid://cv74tsweva3p1"

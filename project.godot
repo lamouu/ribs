@@ -16,7 +16,8 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
 
-Items="*res://scripts/items/classes/items.gd"
+Items="*res://scripts/items/items.gd"
+SignalBus="*res://scripts/signal_bus.gd"
 
 [display]
 
