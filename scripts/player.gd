@@ -3,20 +3,33 @@ extends CharacterBody2D
 signal player_hit
 signal player_really_hit
 signal inventory_updated
+signal update_inventory_ui
 
 @export var dart_scene: PackedScene
 @export var pool_cue_scene: PackedScene
-@export var speed = 500
-@export var damage = 1
 @export var max_health: int = 3
 @export var health: int
 var score: int
 var collision_type = "Player"
+ 
+var base_stats = {
+	speed = 500,
+	attack_damage = 1,
+	attack_speed = 0.25
+}
+
+# player buffs
+var speed_buff := 1.0
+var attack_damage_buff := 1.0
+var attack_speed_buff := 1.0
+var buff_array = [speed_buff, attack_damage_buff, attack_speed_buff]
 
 var inventory: Inventory = Inventory.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	inventory_updated.connect(apply_item_buffs)
+	
 	health = max_health
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,7 +37,7 @@ func _process(delta: float) -> void:
 	var target_velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = velocity.lerp(target_velocity, 1.0 - exp(-20 * get_physics_process_delta_time()))
 
-	position += velocity * delta * speed
+	position += velocity * delta * base_stats.speed
 	move_and_slide()
 	
 	if Input.is_action_pressed("attack"):
@@ -72,3 +85,13 @@ func _input(event):
 	if event.is_action_pressed("debug_3"):
 		inventory.add_item(Items.WHETSTONE)
 		inventory_updated.emit()
+
+func apply_item_buffs():
+	for item in inventory.items:
+		base_stats = item.apply_buff(base_stats)
+	
+	update_attack_speed(base_stats.attack_speed)
+
+func update_attack_speed(x):
+	$AttackCooldown.wait_time = x
+	#$SpecialAttackCooldown.wait_time = x (I think we want item classes, so we can easily pass in the attack speed of the specific weapon here)
