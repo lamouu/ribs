@@ -95,20 +95,21 @@ func take_damage(damage):
 
 # detects collision with goblins that have been knocked back by a pool shot
 func _on_body_entered(body: Node) -> void:
-	if body.collision_layer == 2:
-		if body.is_pool_shot == true or body.is_first_pool_shot == true:
-			# starts timer that disables this goblin's movement for duration, then tells it to stop being a pool shot
-			$PoolShotTimer.start()
-			# makes this goblin inherit the triggering goblin's velocity (not sure about this line)
-			linear_velocity = body.linear_velocity
-			body.take_damage(pool_damage)
-			if body.is_first_pool_shot == true:
+	if body.collision_type == "goblin":
+		if is_pool_shot == false:
+			if body.is_pool_shot or body.is_first_pool_shot:
+				# allows this goblin to trigger this signal for other goblins
+				is_pool_shot = true
+				# starts timer that disables this goblin's movement for duration, then tells it to stop being a pool shot
+				$PoolShotTimer.start()
 				body.is_first_pool_shot = false
-			# allows this goblin to trigger this signal for other goblins
-			is_pool_shot = true
-		else:
-			# applies a backwards 'bounce' when a goblin hits another goblin
-			apply_impulse(-position.direction_to(body.position) * (linear_velocity.length() + 100) * 10)
+			else:
+				# applies a backwards 'bounce' when a goblin hits another goblin
+				apply_impulse(-position.direction_to(body.position) * (linear_velocity.length() + 100) * 20)
+		elif is_pool_shot == true:
+			body.linear_velocity = (linear_velocity * 1.2)
+			take_damage(pool_damage)
+	
 	if body.collision_type == "player":
 		body.take_damage(attack_damage)
 
@@ -122,6 +123,7 @@ func pick_random(dictionary: Dictionary):
 
 func _on_pool_shot_timer_timeout() -> void:
 	is_pool_shot = false
+	is_first_pool_shot = false
 
 
 func _on_goblin_hurtbox_area_entered(area: Area2D) -> void:
@@ -140,12 +142,8 @@ func _on_goblin_hurtbox_area_entered(area: Area2D) -> void:
 		linear_velocity = Vector2(0, 0)
 		apply_impulse(area.firing_vec * area.knockback_impulse)
 		is_first_pool_shot = true
+		is_pool_shot = true
 
 	$TextureProgressBar.show()
 	$TextureProgressBar.value = 100 - health
 	
-
-
-func _on_player_body_entered(body: CharacterBody2D) -> void:
-	body.take_damage(attack_damage)
-

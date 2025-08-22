@@ -29,23 +29,11 @@ func _process(_delta: float) -> void:
 
 	if not $CueExtendTimer.is_stopped():
 		position += movement
-	#if is_firing == false:
-	#	if is_returning == false:
-	#		#position -= Vector2(0, char_offset) - firing_vec * weapon_spacing
-	#		firing_vec = (get_viewport().get_mouse_position() - (get_viewport().get_visible_rect().size / 2) + Vector2(0, char_offset)).normalized()
-	#		rotation = firing_vec.angle()
 	
-	
-	#if is_firing == true:
-	#	global_position += firing_vec * movement
-	#if is_returning == true:
-	#	global_position += firing_vec * movement
-		
 	
 # Called until right click is let go, rotates the pool cue towards the mouse and pulls it backwards into position
 func rotate_to_mouse():
 	firing_vec = ((global_position - position) - Vector2(0, 70)).direction_to(get_global_mouse_position())
-	print(firing_vec)
 	rotation = firing_vec.angle()
 	position = (firing_vec * weapon_spacing) - Vector2(0, 70)
 	if visible == false:

@@ -1,9 +1,9 @@
-[gd_scene load_steps=17 format=4 uid="uid://dxari6vm8lkmh"]
+[gd_scene load_steps=18 format=4 uid="uid://dxari6vm8lkmh"]
 
 [ext_resource type="Script" uid="uid://dengp85k58bvo" path="res://scripts/main.gd" id="1_choun"]
 [ext_resource type="Script" uid="uid://rq78n4ysdu0a" path="res://scripts/topnode.gd" id="1_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://57bo7dxogg2s" path="res://scenes/enemies/goblin_base.tscn" id="2_ya4ey"]
-[ext_resource type="Script" uid="uid://cslm3puurm88w" path="res://scenes/map_border.gd" id="3_jbj1t"]
+[ext_resource type="Script" path="res://scenes/map_border.gd" id="4_muem4"]
 [ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://resources/terrain/terrain_tileset.tres" id="4_trceg"]
 [ext_resource type="PackedScene" uid="uid://c0k5smcwm6xdd" path="res://scenes/player.tscn" id="5_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://csitsj7rw2po6" path="res://scenes/ui/animated_cursor.tscn" id="6_jkv2x"]
@@ -30,7 +30,7 @@ script = ExtResource("1_choun")
 goblin_base_scene = ExtResource("2_ya4ey")
 
 [node name="MapBorder" type="StaticBody2D" parent="Main"]
-script = ExtResource("3_jbj1t")
+script = ExtResource("4_muem4")
 
 [node name="Map" type="ColorRect" parent="Main/MapBorder"]
 visible = false
