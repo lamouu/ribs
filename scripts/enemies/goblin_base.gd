@@ -87,6 +87,11 @@ func go_red():
 	#	$CanvasModulate.set_color(Color(0.941176, 0.972549, 1, 1))
 	pass
 
+func take_damage(damage):
+	health -= damage
+	if health <= 0:
+		queue_free()
+
 # detects collision with goblins that have been knocked back by a pool shot
 func _on_body_entered(body: CollisionObject2D) -> void:
 	if body.collision_layer == 2:
