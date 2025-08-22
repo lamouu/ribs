@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://57bo7dxogg2s" path="res://scenes/enemies/goblin_base.tscn" id="2_ya4ey"]
 [ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://resources/terrain/terrain_tileset.tres" id="4_trceg"]
 [ext_resource type="PackedScene" uid="uid://c0k5smcwm6xdd" path="res://scenes/player.tscn" id="5_a8y0u"]
-[ext_resource type="Script" uid="uid://gtxu8vhc2ma0" path="res://scenes/camera_2d.gd" id="6_jbj1t"]
+[ext_resource type="Script" path="res://scenes/camera_2d.gd" id="6_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://csitsj7rw2po6" path="res://scenes/ui/animated_cursor.tscn" id="6_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://c02ome8dto14" path="res://art/ui/healthbarUnder.png" id="7_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://dsxl4jwtlp7wq" path="res://art/ui/healthbarProgress.png" id="8_muem4"]
