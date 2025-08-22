@@ -1,6 +1,7 @@
 extends Node
 
-@onready var hearts_container = $CanvasLayer/HeartsContainer
+@onready var hearts_container = $"../CanvasLayer/HeartsContainer"
+@onready var map = $MapBorder/Map
 @export var goblin_resource: Resource
 @export var goblin_base_scene: PackedScene
 
@@ -25,6 +26,7 @@ func _ready() -> void:
 	#var goblin_base = goblin_base_scene.instantiate()
 	#add_child(goblin_base)
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
@@ -40,12 +42,12 @@ func _on_spawn_timer_timeout() -> void:
 	var y_offset = DisplayServer.screen_get_size().y
 	var rnd_y_offset = rng.randf_range(- y_offset * 0.5, y_offset * 0.5)
 	
-	var map_top_position = $Map.position.y
-	var map_bottom_position = map_top_position + $Map.size.y
+	var map_top_position = map.position.y
+	var map_bottom_position = map_top_position + map.size.y
 	var player_camera_top_position = camera_center.y - (player_camera_size.y / 2)
 	var player_camera_bottom_position = camera_center.y + (player_camera_size.y / 2)
-	var map_leftmost_position = $Map.position.x
-	var map_rightmost_position = map_leftmost_position + $Map.size.x
+	var map_leftmost_position = map.position.x
+	var map_rightmost_position = map_leftmost_position + map.size.x
 	var player_camera_leftmost_position = camera_center.x - (player_camera_size.x / 2)
 	var player_camera_rightmost_position = camera_center.x + (player_camera_size.x / 2)
 	

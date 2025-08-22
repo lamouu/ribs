@@ -3,7 +3,7 @@ extends Area2D
 @export var speed = 600
 @export var dart_damage = 50
 @export var weapon_spacing = 60
-@export var char_offset = 35
+@export var char_offset = 80
 @export var knockback_impulse = 30000
 
 var collision_type = "dart"

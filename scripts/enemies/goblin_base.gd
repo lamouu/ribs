@@ -32,7 +32,7 @@ func _ready() -> void:
 	goblin_type = goblin_type_resource.get_random_type()
 	$Sprite2D.texture = goblin_type_resource.texture
 		#setup from old goblin types
-	player_node = get_node("/root/Main/Player")
+	player_node = get_node("/root/Node/Main/Player")
 	follow_physics()
 	player_node.player_hit.connect(_on_player_hit)
 
@@ -71,7 +71,7 @@ func follow_physics():
 	else:
 		$Sprite2D.flip_h = false
 
-func _on_player_hit(damage_source):
+func _on_player_hit():
 	#if damage_source == self: # toggle to only push back the mob that hurt my boy
 	get_pushed()
 	go_red()
@@ -92,28 +92,23 @@ func take_damage(damage):
 		queue_free()
 
 # detects collision with goblins that have been knocked back by a pool shot
-func _on_body_entered(body: Node) -> void:
-	if body.mob_type == "goblin":
+func _on_body_entered(body: CollisionObject2D) -> void:
+	if body.collision_layer == 2:
 		if body.is_pool_shot == true or body.is_first_pool_shot == true:
-			# makes this goblin inherit the triggering goblin's velocity (not sure about this line)
-			if body.linear_velocity == body.velocity_a:
-				linear_velocity = body.velocity_b
-			elif body.linear_velocity == body.velocity_b:
-				linear_velocity = body.velocity_a
-			if body.is_pool_shot == true:
-				body.take_damage(pool_damage)
-			elif body.is_first_pool_shot == true:
-				body.take_damage(pool_damage)
-				body.is_first_pool_shot = false
 			# starts timer that disables this goblin's movement for duration, then tells it to stop being a pool shot
 			$PoolShotTimer.start()
+			# makes this goblin inherit the triggering goblin's velocity (not sure about this line)
+			linear_velocity = body.linear_velocity
+			body.take_damage(pool_damage)
+			if body.is_first_pool_shot == true:
+				body.is_first_pool_shot = false
 			# allows this goblin to trigger this signal for other goblins
 			is_pool_shot = true
 		else:
 			# applies a backwards 'bounce' when a goblin hits another goblin
 			apply_impulse(-position.direction_to(body.position) * (linear_velocity.length() + 100) * 10)
-		
-		
+
+
 
 #returns a random key from the goblin_type_dictionary
 func pick_random(dictionary: Dictionary):
@@ -137,6 +132,12 @@ func _on_goblin_hurtbox_area_entered(area: Area2D) -> void:
 			# flash body red using canvasmodulate
 	if area.collision_type == "pool_cue":
 		area.disable_collision()
+		$PoolShotTimer.start()
+		linear_velocity = Vector2(0, 0)
 		apply_impulse(area.firing_vec * area.knockback_impulse)
 		is_first_pool_shot = true
 	
+
+
+func _on_player_body_entered(body: CharacterBody2D) -> void:
+	body.take_damage(attack_damage)

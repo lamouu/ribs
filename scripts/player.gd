@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 
 signal player_hit
 signal player_really_hit
@@ -11,7 +11,7 @@ signal inventory_updated
 @export var max_health: int = 3
 @export var health: int
 var score: int
-var velocity: Vector2
+var collision_type = "Player"
 
 var inventory: Inventory = Inventory.new()
 
@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 	velocity = velocity.lerp(target_velocity, 1.0 - exp(-20 * get_physics_process_delta_time()))
 
 	position += velocity * delta * speed
+	move_and_slide()
 	
 	if Input.is_action_pressed("attack"):
 		if $AttackCooldown.is_stopped():
@@ -38,20 +39,20 @@ func _process(delta: float) -> void:
 			var pool_cue = pool_cue_scene.instantiate()
 			add_child(pool_cue)
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(body: RigidBody2D) -> void:
 	take_damage(body)
 	
-func take_damage(damage_source):
+func take_damage(attack_damage):
 	if $InvulnerabilityTimer.is_stopped():
-		if damage_source.mob_type == "goblin": #unused so far
-			pass
-		
-		health -= damage_source.attack_damage
-		
+		#if damage_source.mob_type == "goblin": #unused so far
+		#	pass
+
+		health -= attack_damage
+
 		$InvulnerabilityTimer.start()
 		$InvulnerabilityAnimation.play("damage_taken")
-		
-		player_hit.emit(damage_source)
+
+		player_hit.emit()
 		player_really_hit.emit(health)
 
 
