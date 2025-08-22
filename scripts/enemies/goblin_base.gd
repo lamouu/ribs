@@ -25,6 +25,7 @@ var is_first_pool_shot: bool = false
 var velocity_a
 var velocity_b
 var goblin_type
+var collision_type = "goblin"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -92,7 +93,7 @@ func take_damage(damage):
 		queue_free()
 
 # detects collision with goblins that have been knocked back by a pool shot
-func _on_body_entered(body: CollisionObject2D) -> void:
+func _on_body_entered(body: Node) -> void:
 	if body.collision_layer == 2:
 		if body.is_pool_shot == true or body.is_first_pool_shot == true:
 			# starts timer that disables this goblin's movement for duration, then tells it to stop being a pool shot
@@ -107,6 +108,8 @@ func _on_body_entered(body: CollisionObject2D) -> void:
 		else:
 			# applies a backwards 'bounce' when a goblin hits another goblin
 			apply_impulse(-position.direction_to(body.position) * (linear_velocity.length() + 100) * 10)
+	if body.collision_type == "Player":
+		body.take_damage(attack_damage)
 
 
 
@@ -136,8 +139,3 @@ func _on_goblin_hurtbox_area_entered(area: Area2D) -> void:
 		linear_velocity = Vector2(0, 0)
 		apply_impulse(area.firing_vec * area.knockback_impulse)
 		is_first_pool_shot = true
-	
-
-
-func _on_player_body_entered(body: CharacterBody2D) -> void:
-	body.take_damage(attack_damage)
