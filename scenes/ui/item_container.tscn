@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://b3ylm7t5g7f2t"]
-
-[node name="ItemContainer" type="VBoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/separation = 135
