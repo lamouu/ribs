@@ -134,7 +134,7 @@ func _on_goblin_hurtbox_area_entered(area: Area2D) -> void:
 		is_first_pool_shot = true
 	
 	$TextureProgressBar.show()
-	$TextureProgressBar.value = health
+	$TextureProgressBar.value = 100 - health
 	
 
 
