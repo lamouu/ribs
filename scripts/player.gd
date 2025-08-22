@@ -3,7 +3,6 @@ extends CharacterBody2D
 signal player_hit
 signal player_really_hit
 signal inventory_updated
-signal update_inventory_ui
 
 @export var dart_scene: PackedScene
 @export var pool_cue_scene: PackedScene
@@ -18,6 +17,8 @@ var base_stats = {
 	attack_speed = 0.25
 }
 
+var stats = base_stats.duplicate()
+
 var inventory: Inventory = Inventory.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -31,7 +32,7 @@ func _process(delta: float) -> void:
 	var target_velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = velocity.lerp(target_velocity, 1.0 - exp(-20 * get_physics_process_delta_time()))
 
-	position += velocity * delta * base_stats.speed
+	position += velocity * delta * stats.speed
 	move_and_slide()
 	
 	if Input.is_action_pressed("attack"):
@@ -81,10 +82,13 @@ func _input(event):
 		inventory_updated.emit()
 
 func apply_item_buffs():
-	for item in inventory.items:
-		base_stats = item.apply_buff(base_stats)
+	stats = base_stats.duplicate()
 	
-	update_attack_speed(base_stats.attack_speed)
+	for item in inventory.items:
+		for i in inventory.items[item]:
+			stats = item.apply_buff(stats)
+	
+	update_attack_speed(stats.attack_speed)
 
 func update_attack_speed(x):
 	$AttackCooldown.wait_time = x
