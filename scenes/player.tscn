@@ -97,7 +97,10 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_1jxqw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-enabled = false
+limit_left = -1920
+limit_top = -1080
+limit_right = 1920
+limit_bottom = 1080
 
 [node name="Shader" type="CanvasLayer" parent="Camera2D"]
 
