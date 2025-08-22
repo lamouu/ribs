@@ -15,7 +15,6 @@ func roll_items():
 	
 	for item_button in [$Item1, $Item2, $Item3]:
 		var rolled_item = available_items.keys().pick_random()
-		print(available_items)
 		
 		shop_items[item_button] = available_items[rolled_item]
 		item_button.texture_normal = shop_items[item_button].texture

@@ -22,30 +22,33 @@ texture = ExtResource("1_jinvx")
 
 [node name="Item1" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 718.0
-offset_top = 521.0
-offset_right = 932.0
-offset_bottom = 658.0
-scale = Vector2(0.5, 0.5)
+offset_left = 725.0
+offset_top = 512.0
+offset_right = 945.0
+offset_bottom = 732.0
+scale = Vector2(0.4, 0.4)
 texture_normal = ExtResource("3_ba66w")
+stretch_mode = 3
 
 [node name="Item2" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 975.0
-offset_top = 504.0
-offset_right = 1163.0
-offset_bottom = 726.0
-scale = Vector2(0.5, 0.5)
+offset_left = 974.0
+offset_top = 513.0
+offset_right = 1194.0
+offset_bottom = 735.0
+scale = Vector2(0.4, 0.4)
 texture_normal = ExtResource("4_xvbf5")
+stretch_mode = 3
 
 [node name="Item3" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 1188.0
-offset_top = 534.0
-offset_right = 1421.0
-offset_bottom = 630.0
-scale = Vector2(0.5, 0.5)
+offset_left = 1201.0
+offset_top = 513.0
+offset_right = 1434.0
+offset_bottom = 733.0
+scale = Vector2(0.4, 0.4)
 texture_normal = ExtResource("5_nssha")
+stretch_mode = 3
 
 [node name="Refresh" type="TextureButton" parent="."]
 layout_mode = 1
