@@ -17,10 +17,12 @@ func _ready() -> void:
 	set_as_top_level(true)
 	player_node = get_node("../../Player")
 	
-	firing_vec = (get_viewport().get_mouse_position() - (get_viewport().get_visible_rect().size / 2) + Vector2(0, char_offset)).normalized()
-	global_position = player_node.position - Vector2(0, char_offset) + firing_vec * weapon_spacing
+	global_position = player_node.position - Vector2(0, char_offset)
+	firing_vec = global_position.direction_to(get_global_mouse_position())
+	
 	rotation = firing_vec.angle()
 	velocity = firing_vec * speed
+	position += firing_vec * weapon_spacing
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

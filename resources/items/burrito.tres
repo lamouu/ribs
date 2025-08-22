@@ -7,4 +7,5 @@
 script = ExtResource("1_x0i1c")
 item_name = "Burrito"
 texture = ExtResource("2_muf6a")
+unique = false
 metadata/_custom_type_script = "uid://cv74tsweva3p1"

@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://dxari6vm8lkmh"]
+[gd_scene load_steps=16 format=4 uid="uid://dxari6vm8lkmh"]
 
 [ext_resource type="Script" uid="uid://dengp85k58bvo" path="res://scripts/main.gd" id="1_choun"]
 [ext_resource type="PackedScene" uid="uid://57bo7dxogg2s" path="res://scenes/enemies/goblin_base.tscn" id="2_ya4ey"]
 [ext_resource type="TileSet" uid="uid://b2bke3bxnu16y" path="res://resources/terrain/terrain_tileset.tres" id="4_trceg"]
 [ext_resource type="PackedScene" uid="uid://c0k5smcwm6xdd" path="res://scenes/player.tscn" id="5_a8y0u"]
+[ext_resource type="Script" uid="uid://gtxu8vhc2ma0" path="res://scenes/camera_2d.gd" id="6_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://csitsj7rw2po6" path="res://scenes/ui/animated_cursor.tscn" id="6_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://c02ome8dto14" path="res://art/ui/healthbarUnder.png" id="7_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://dsxl4jwtlp7wq" path="res://art/ui/healthbarProgress.png" id="8_muem4"]
@@ -64,6 +65,13 @@ speed_scale = 2.0
 [node name="RoundTimer" type="Timer" parent="Main"]
 wait_time = 60.0
 autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="Main"]
+limit_left = -1920
+limit_top = -1080
+limit_right = 1920
+limit_bottom = 1080
+script = ExtResource("6_jbj1t")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

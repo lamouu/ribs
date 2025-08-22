@@ -33,7 +33,7 @@ func _process(_delta: float) -> void:
 
 func _on_spawn_timer_timeout() -> void:
 	var mob = goblin_base_scene.instantiate()
-	var camera_center = $Player/Camera2D.get_screen_center_position()
+	var camera_center = $Camera2D.get_screen_center_position()
 	
 	mob_spawn_zone = ["below", "above", "left", "right"].pick_random()
 

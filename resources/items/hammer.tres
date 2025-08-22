@@ -7,4 +7,5 @@
 script = ExtResource("1_yji5g")
 item_name = "Hammer"
 texture = ExtResource("2_7khx6")
+unique = false
 metadata/_custom_type_script = "uid://cv74tsweva3p1"
